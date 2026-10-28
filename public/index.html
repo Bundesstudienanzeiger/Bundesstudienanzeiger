@@ -1,223 +1,458 @@
 <!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Bundesstudienanzeiger - Onkologie</title><link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"><style>
 :root{--orange:#d86422;--orange-dark:#a8440d;--orange-soft:#fff1e8;--orange-pale:#fff8f3;--ink:#29251f;--muted:#6e675f;--line:#e7d8cd;--white:#fff;--shadow:0 12px 34px rgba(91,52,25,.09)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font:16px/1.55 "Century Gothic",CenturyGothic,AppleGothic,Futura,Arial,sans-serif;background:#fbf8f5;color:var(--ink)}button,input,select{font:inherit}button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid #f3b083;outline-offset:2px}
-.topline{height:8px;background:var(--orange)}header{background:var(--white);border-bottom:1px solid var(--line)}.header-inner{max-width:1440px;margin:auto;padding:28px 38px 25px;display:flex;align-items:center;gap:17px}.brand-mark{width:112px;height:112px;flex:0 0 112px}.brand-mark svg{display:block;width:100%;height:100%;overflow:visible}.brand h1{margin:0;color:#252327;font-family:"Century Gothic",CenturyGothic,AppleGothic,Arial,sans-serif;line-height:.91}.brand-name{display:block;font-size:clamp(1.45rem,2.55vw,2rem);font-weight:400;letter-spacing:-.018em}.brand-field{display:block;margin-top:5px;font-size:clamp(1.55rem,2.7vw,2.15rem);font-weight:700;letter-spacing:-.018em;text-transform:none}.brand p{margin:14px 0 0;color:var(--muted);font-size:.95rem}
+.topline{height:8px;background:var(--orange)}header{background:var(--white);border-bottom:1px solid var(--line)}.header-inner{max-width:1440px;margin:auto;padding:28px 38px 25px;display:flex;align-items:center;gap:17px}.brand-mark{width:112px;height:112px;flex:0 0 112px}.brand-mark svg{display:block;width:100%;height:100%;overflow:visible}.brand h1{margin:0;color:#252327;line-height:.91}.brand-name{display:block;font-size:clamp(1.45rem,2.55vw,2rem);font-weight:400;letter-spacing:-.018em}.brand-field{display:block;margin-top:5px;font-size:clamp(1.55rem,2.7vw,2.15rem);font-weight:700;letter-spacing:-.018em}.brand p{margin:14px 0 0;color:var(--muted);font-size:.95rem}
 .layout{display:grid;grid-template-columns:310px minmax(0,1fr);max-width:1440px;margin:0 auto;min-height:calc(100vh - 145px)}aside{background:#f6eee8;padding:30px 22px;border-right:1px solid var(--line)}.aside-title{display:block;margin:0 8px 15px;color:var(--orange-dark);font-size:.82rem;letter-spacing:.09em;text-transform:uppercase}.entity{display:block;width:100%;text-align:left;border:0;border-left:4px solid transparent;background:transparent;color:#473f38;padding:11px 13px;margin:2px 0;border-radius:0 7px 7px 0;cursor:pointer;transition:.18s ease}.entity:hover{background:#fff7f0;color:var(--orange-dark)}.entity.active{background:var(--white);border-left-color:var(--orange);color:var(--orange-dark);font-weight:700;box-shadow:0 3px 14px rgba(91,52,25,.07)}
-main{padding:42px 46px 64px;min-width:0}.intro{margin-bottom:28px}h2{margin:0 0 10px;font-family:inherit;color:#3b3028;font-size:clamp(1.8rem,3vw,2.55rem);line-height:1.15;font-weight:600}h2:after{content:"";display:block;width:58px;height:4px;margin-top:14px;background:var(--orange)}h3{font-family:inherit;color:#4c382b;margin-top:30px}p{max-width:78ch}.toolbar{display:grid;grid-template-columns:minmax(240px,1fr) minmax(190px,auto);gap:12px;margin:24px 0 12px;padding:18px;background:var(--white);border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow)}input,select,button{padding:11px 13px;border:1px solid #d9c8bb;border-radius:5px;background:#fff;color:var(--ink)}input{width:100%;min-width:0}input:hover,select:hover{border-color:var(--orange)}
-.study{background:var(--white);padding:20px 22px;margin:12px 0;border:1px solid var(--line);border-left:5px solid #e6b18f;border-radius:7px;cursor:pointer;box-shadow:0 4px 15px rgba(67,41,22,.04);transition:.18s ease}.study:hover{transform:translateY(-2px);border-left-color:var(--orange);box-shadow:var(--shadow)}.study b{display:block;color:#473125;font-size:1.06rem;margin-bottom:5px}.study-link{color:inherit;text-decoration:none}.study-link:hover b,.study-link:focus b{text-decoration:underline;text-decoration-color:var(--orange);text-underline-offset:3px}.study-link{color:inherit;text-decoration:none}.study-link:hover b,.study-link:focus b{text-decoration:underline;text-decoration-color:var(--orange);text-underline-offset:3px}.muted{color:var(--muted);font-size:.86rem}.tag{display:inline-block;background:var(--orange-soft);color:var(--orange-dark);padding:5px 9px;border:1px solid #f2d1bb;border-radius:3px;margin:4px 5px 4px 0;font-size:.78rem;font-weight:650}#more,.back{cursor:pointer;background:var(--orange);color:#fff;border-color:var(--orange);font-weight:650;margin-top:12px}#more:hover,.back:hover{background:var(--orange-dark)}#map{height:360px;border-radius:7px;margin-top:14px;border:1px solid var(--line)}.details{background:var(--white);padding:30px;margin-top:18px;border:1px solid var(--line);border-top:6px solid var(--orange);border-radius:8px;box-shadow:var(--shadow)}.details a{color:var(--orange-dark);font-weight:650}.criteria{white-space:pre-wrap;line-height:1.65;overflow-wrap:anywhere;background:#fcfaf8;border-left:4px solid #efc1a3;padding:17px}.notice{background:var(--orange-pale);border:1px solid #f2d2bd;border-left:5px solid var(--orange);padding:15px 17px;border-radius:5px;margin:20px 0;color:#51453d}
-@media(max-width:850px){.header-inner{padding:22px 20px}.layout{display:block}.brand-mark{width:82px;height:82px;flex-basis:82px}aside{border-right:0;border-bottom:1px solid var(--line);padding:17px 13px;max-height:235px;overflow:auto}.entity{display:inline-block;width:auto;border-left:0;border-bottom:3px solid transparent;border-radius:5px;padding:8px 10px}.entity.active{border-left:0;border-bottom-color:var(--orange)}main{padding:28px 17px 48px}.toolbar{grid-template-columns:1fr}.details{padding:21px 17px}}
-
-.viewbar{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin:18px 0 10px}.viewtabs{display:inline-flex;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:#fff}.viewtab{border:0;border-radius:0;background:#fff;color:var(--orange-dark);padding:10px 18px;cursor:pointer;font-weight:700}.viewtab.active{background:var(--orange);color:#fff}.geo-panel{background:var(--white);border:1px solid var(--line);border-left:5px solid var(--orange);border-radius:7px;padding:18px;margin:14px 0 20px;box-shadow:0 4px 15px rgba(67,41,22,.04)}.geo-panel h3{margin:0 0 4px;font-family:inherit;font-size:1rem}.geo-help{margin:0 0 13px}.geo-fields{display:grid;grid-template-columns:minmax(190px,1fr) minmax(145px,190px) auto auto;gap:10px;align-items:center}.geo-fields input{min-width:0}.geo-fields button{cursor:pointer;font-weight:700}.geo-apply{background:var(--orange);border-color:var(--orange);color:#fff}.geo-apply:hover{background:var(--orange-dark)}.geo-reset{background:#fff;color:var(--orange-dark)}.geo-status{margin:11px 0 0;min-height:1.35em}.overview-map{height:560px!important;margin:8px 0 18px!important;background:#eee}.map-popup-title{display:block;max-width:260px;margin-bottom:5px}.map-popup-meta{font-size:12px;color:#62574f}.cluster-marker{background:var(--orange);border:3px solid #fff;color:#fff;border-radius:50%;box-shadow:0 2px 8px rgba(0,0,0,.3);display:grid;place-items:center;font-weight:700}.empty-state{padding:25px;background:#fff;border:1px solid var(--line);border-radius:7px}.result-summary{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}.leaflet-popup-content button{margin-top:8px;padding:6px 9px;background:var(--orange);color:#fff;border-color:var(--orange);cursor:pointer}.location-highlight{font-weight:700;color:var(--orange-dark)}.site-count-icon{background:transparent;border:0}.ctis-zeile{margin:8px 0 0;font-size:.9rem;min-height:1.2em;color:var(--muted)}.ctis-zeile.laden{color:#a8440d;font-weight:700}.ctis-zeile.fertig{color:#14532d;font-weight:700}.ctis-fertig{background:#e8f7ee;border-color:#9fd9b4;border-left-color:#1a7f45;color:#14532d}.ctis-laden{background:#fff6e6;border-color:#f0d09a;border-left-color:#d97706}.ctis-btn{margin-left:10px;padding:6px 11px;border-radius:5px;border:1px solid var(--orange);background:var(--orange);color:#fff;cursor:pointer;font-weight:700}.ctis-btn-leise{background:#fff;color:var(--orange-dark)}.loc-table-wrap{margin:12px 0 18px;overflow-x:auto;border:1px solid var(--line);border-radius:7px;background:#fff}.loc-table{border-collapse:collapse;width:100%;min-width:900px;font-size:.83rem}.loc-table th,.loc-table td{text-align:left;padding:10px 12px;border-bottom:1px solid #ece1d8;vertical-align:top}.loc-table th{background:#f6eee8;color:var(--orange-dark);font-weight:700;white-space:nowrap}.loc-table tbody tr:hover{background:#fffaf6}.ctis-info{margin:14px 0}.ctis-info div{display:grid;grid-template-columns:minmax(160px,230px) 1fr;gap:14px;padding:9px 0;border-bottom:1px solid #efe4db}.ctis-info div span{color:var(--muted);font-size:.88rem}.ctis-info div b{font-weight:700;overflow-wrap:anywhere}@media(max-width:640px){.ctis-info div{grid-template-columns:1fr;gap:2px}}.site-count-badge{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--orange);color:#fff;border:3px solid #fff;box-shadow:0 2px 8px rgba(60,37,20,.38);font-weight:700;font-size:.82rem}.site-popup{max-width:340px}.site-popup-head{margin-bottom:9px;padding-bottom:8px;border-bottom:1px solid #e7d8cd}.site-study{padding:9px 0;border-top:1px solid #eee3da}.site-study:first-of-type{border-top:0}.site-study-title{display:block;font-weight:700;line-height:1.35;margin-bottom:4px}.site-study-meta{font-size:.75rem;color:#6e675f}.site-study button{margin-top:6px;padding:6px 9px}.site-popup-list{max-height:280px;overflow:auto;padding-right:4px}
-@media(max-width:850px){.geo-fields{grid-template-columns:1fr 1fr}.geo-fields .geo-apply,.geo-fields .geo-reset{width:100%}.overview-map{height:430px!important}}
+main{padding:42px 46px 64px;min-width:0}h2{margin:0 0 10px;color:#3b3028;font-size:clamp(1.8rem,3vw,2.55rem);line-height:1.15;font-weight:600}h2:after{content:"";display:block;width:58px;height:4px;margin-top:14px;background:var(--orange)}h3{color:#4c382b;margin-top:30px}p{max-width:78ch}.toolbar{display:grid;grid-template-columns:minmax(240px,1fr) minmax(190px,auto);gap:12px;margin:24px 0 12px;padding:18px;background:var(--white);border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow)}input,select,button{padding:11px 13px;border:1px solid #d9c8bb;border-radius:5px;background:#fff;color:var(--ink)}input{width:100%;min-width:0}input:hover,select:hover{border-color:var(--orange)}
+.study{background:var(--white);padding:20px 22px;margin:12px 0;border:1px solid var(--line);border-left:5px solid #e6b18f;border-radius:7px;cursor:pointer;box-shadow:0 4px 15px rgba(67,41,22,.04);transition:.18s ease}.study:hover{transform:translateY(-2px);border-left-color:var(--orange);box-shadow:var(--shadow)}.study b{display:block;color:#473125;font-size:1.06rem;margin-bottom:5px}.study-link{color:inherit;text-decoration:none}.study-link:hover b,.study-link:focus b{text-decoration:underline;text-decoration-color:var(--orange);text-underline-offset:3px}.muted{color:var(--muted);font-size:.86rem}.tag{display:inline-block;background:var(--orange-soft);color:var(--orange-dark);padding:5px 9px;border:1px solid #f2d1bb;border-radius:3px;margin:4px 5px 4px 0;font-size:.78rem;font-weight:650}#more,.back{cursor:pointer;background:var(--orange);color:#fff;border-color:var(--orange);font-weight:650;margin-top:12px}#more:hover,.back:hover{background:var(--orange-dark)}#map{height:360px;border-radius:7px;margin-top:14px;border:1px solid var(--line)}.details{background:var(--white);padding:30px;margin-top:18px;border:1px solid var(--line);border-top:6px solid var(--orange);border-radius:8px;box-shadow:var(--shadow)}.details a{color:var(--orange-dark);font-weight:650}.criteria{white-space:pre-wrap;line-height:1.65;overflow-wrap:anywhere;background:#fcfaf8;border-left:4px solid #efc1a3;padding:17px}.notice{background:var(--orange-pale);border:1px solid #f2d2bd;border-left:5px solid var(--orange);padding:15px 17px;border-radius:5px;margin:20px 0;color:#51453d}
+.viewbar{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin:18px 0 10px}.viewtabs{display:inline-flex;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:#fff}.viewtab{border:0;border-radius:0;background:#fff;color:var(--orange-dark);padding:10px 18px;cursor:pointer;font-weight:700}.viewtab.active{background:var(--orange);color:#fff}.geo-panel{background:var(--white);border:1px solid var(--line);border-left:5px solid var(--orange);border-radius:7px;padding:18px;margin:14px 0 20px;box-shadow:0 4px 15px rgba(67,41,22,.04)}.geo-panel h3{margin:0 0 4px;font-size:1rem}.geo-help{margin:0 0 13px}.geo-fields{display:grid;grid-template-columns:minmax(190px,1fr) minmax(145px,190px) auto auto;gap:10px;align-items:center}.geo-fields input{min-width:0}.geo-fields button{cursor:pointer;font-weight:700}.geo-apply{background:var(--orange);border-color:var(--orange);color:#fff}.geo-apply:hover{background:var(--orange-dark)}.geo-reset{background:#fff;color:var(--orange-dark)}.geo-status{margin:11px 0 0;min-height:1.35em}.overview-map{height:560px!important;margin:8px 0 18px!important;background:#eee}.map-popup-meta{font-size:12px;color:#62574f}.empty-state{padding:25px;background:#fff;border:1px solid var(--line);border-radius:7px}.location-highlight{font-weight:700;color:var(--orange-dark)}.site-count-icon{background:transparent;border:0}.site-count-badge{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--orange);color:#fff;border:3px solid #fff;box-shadow:0 2px 8px rgba(60,37,20,.38);font-weight:700;font-size:.82rem}.site-popup{max-width:340px}.site-popup-head{margin-bottom:9px;padding-bottom:8px;border-bottom:1px solid #e7d8cd}.site-study{padding:9px 0;border-top:1px solid #eee3da}.site-study:first-of-type{border-top:0}.site-study-title{display:block;font-weight:700;line-height:1.35;margin-bottom:4px}.site-study-meta{font-size:.75rem;color:#6e675f}.site-study button{margin-top:6px;padding:6px 9px}.site-popup-list{max-height:280px;overflow:auto;padding-right:4px}
+@media(max-width:850px){.header-inner{padding:22px 20px}.layout{display:block}.brand-mark{width:82px;height:82px;flex-basis:82px}aside{border-right:0;border-bottom:1px solid var(--line);padding:17px 13px;max-height:235px;overflow:auto}.entity{display:inline-block;width:auto;border-left:0;border-bottom:3px solid transparent;border-radius:5px;padding:8px 10px}.entity.active{border-left:0;border-bottom-color:var(--orange)}main{padding:28px 17px 48px}.toolbar{grid-template-columns:1fr}.details{padding:21px 17px}.geo-fields{grid-template-columns:1fr 1fr}.geo-fields .geo-apply,.geo-fields .geo-reset{width:100%}.overview-map{height:430px!important}}
 @media(max-width:520px){.geo-fields{grid-template-columns:1fr}.viewtabs{width:100%}.viewtab{flex:1}}
-
-.site-home{display:flex;align-items:center;gap:17px;color:inherit;text-decoration:none;min-width:0}.site-home:focus-visible{border-radius:8px}.status-label{display:inline-block;padding:3px 8px;border-radius:999px;font-size:.78rem;font-weight:700;letter-spacing:.01em}.status-recruiting{color:#166534;background:#dcfce7;border:1px solid #86efac}.status-pending{color:#a8440d;background:#fff0e5;border:1px solid #f1b587}.status-neutral{color:#5f574f;background:#f2efec;border:1px solid #ddd4cd}.home-card{background:#fff;border:1px solid var(--line);border-top:6px solid var(--orange);border-radius:9px;padding:clamp(24px,4vw,42px);box-shadow:var(--shadow)}.home-card .lead{font-size:1.08rem;color:#4e453e}.home-points{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:28px 0}.home-point{background:var(--orange-pale);border:1px solid #f0d3bf;border-radius:7px;padding:17px}.home-point strong{display:block;color:var(--orange-dark);margin-bottom:5px}.home-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.home-actions button{cursor:pointer;background:var(--orange);color:#fff;border-color:var(--orange);font-weight:700}.home-actions button:hover{background:var(--orange-dark)}.legal-page{background:#fff;border:1px solid var(--line);border-radius:9px;padding:clamp(23px,4vw,40px);box-shadow:var(--shadow)}.legal-page h3{margin-top:28px}.legal-page a,.site-footer a{color:var(--orange-dark)}.site-footer{background:#382f29;color:#f7eee8}.footer-inner{max-width:1440px;margin:auto;padding:22px 38px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}.footer-links{display:flex;gap:18px;flex-wrap:wrap}.footer-links button{padding:0;border:0;background:transparent;color:#fff3e9;cursor:pointer;text-decoration:underline;text-underline-offset:3px}.footer-note{font-size:.82rem;color:#d8c9be}.legal-note{font-size:.86rem;color:var(--muted);border-top:1px solid var(--line);padding-top:16px;margin-top:28px}
+.status-label{display:inline-block;padding:3px 8px;border-radius:999px;font-size:.78rem;font-weight:700;letter-spacing:.01em}.status-recruiting{color:#166534;background:#dcfce7;border:1px solid #86efac}.status-pending{color:#a8440d;background:#fff0e5;border:1px solid #f1b587}.status-neutral{color:#5f574f;background:#f2efec;border:1px solid #ddd4cd}
+.home-card{background:#fff;border:1px solid var(--line);border-top:6px solid var(--orange);border-radius:9px;padding:clamp(24px,4vw,42px);box-shadow:var(--shadow)}.home-card .lead{font-size:1.08rem;color:#4e453e}.home-points{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:28px 0}.home-point{background:var(--orange-pale);border:1px solid #f0d3bf;border-radius:7px;padding:17px}.home-point strong{display:block;color:var(--orange-dark);margin-bottom:5px}.home-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.home-actions button{cursor:pointer;background:var(--orange);color:#fff;border-color:var(--orange);font-weight:700}.home-actions button:hover{background:var(--orange-dark)}
+.legal-page{background:#fff;border:1px solid var(--line);border-radius:9px;padding:clamp(23px,4vw,40px);box-shadow:var(--shadow)}.legal-page h3{margin-top:28px}.legal-page a,.site-footer a{color:var(--orange-dark)}
+.site-footer{background:#382f29;color:#f7eee8}.footer-inner{max-width:1440px;margin:auto;padding:22px 38px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}.footer-links{display:flex;gap:18px;flex-wrap:wrap}.footer-links button{padding:0;border:0;background:transparent;color:#fff3e9;cursor:pointer;text-decoration:underline;text-underline-offset:3px}.footer-note{font-size:.82rem;color:#d8c9be}
+.loc-table-wrap{margin:12px 0 18px;overflow-x:auto;border:1px solid var(--line);border-radius:7px;background:#fff}.loc-table{border-collapse:collapse;width:100%;min-width:900px;font-size:.83rem}.loc-table th,.loc-table td{text-align:left;padding:10px 12px;border-bottom:1px solid #ece1d8;vertical-align:top}.loc-table th{background:#f6eee8;color:var(--orange-dark);font-weight:700;white-space:nowrap}.loc-table tbody tr:hover{background:#fffaf6}
+.site-home{display:flex;align-items:center;gap:17px;color:inherit;text-decoration:none;min-width:0}.site-home:focus-visible{border-radius:8px}
 @media(max-width:850px){.site-home{align-items:flex-start}.home-points{grid-template-columns:1fr}.footer-inner{padding:20px 17px}}
 </style></head><body><div class="topline"></div><header><div class="header-inner"><a class="site-home" href="#start" id="homeLink" aria-label="Zur Startseite"><div class="brand-mark" aria-hidden="true"><svg viewBox="0 0 120 120" focusable="false"><path d="M13 72 L43 24 L84 39 L103 82 L57 102 Z" fill="none" stroke="#f39200" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><path d="M43 24 L57 102 M84 39 L13 72 M84 39 L57 102" fill="none" stroke="#f39200" stroke-width="3" stroke-linecap="round" opacity=".75"/><g fill="#f39200"><circle cx="43" cy="24" r="8"/><circle cx="84" cy="39" r="8"/><circle cx="13" cy="72" r="8"/><circle cx="103" cy="82" r="8"/><circle cx="57" cy="102" r="8"/></g></svg></div><div class="brand"><h1><span class="brand-name">Bundesstudienanzeiger</span><span class="brand-field">Onkologie</span></h1><p>Unabhängiges Informationsportal für klinische Studien · Phase I/II-III · Aktuelle Daten aus dem Clinical Trials Information System (CTIS) und ClinicalTrials.gov</p></div></a></div></header><div class="layout"><aside><strong class="aside-title">Tumorentitäten</strong><div id="entities"></div></aside><main><div id="app"><h2>Studienübersicht</h2><p>Wählen Sie eine Tumorentität.</p></div></main></div><footer class="site-footer"><div class="footer-inner"><div class="footer-note">Bundesstudienanzeiger - Onkologie · Unabhängiges Informationsangebot</div><nav class="footer-links" aria-label="Rechtliche Hinweise"><button type="button" data-page="privacy">Datenschutzerklärung</button><button type="button" data-page="imprint">Impressum</button></nav></div></footer><script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script><script>
-const entities=[['Mammakarzinom','breast cancer'],['Prostatakarzinom','prostate cancer'],['Lungenkarzinom','lung cancer'],['Kolorektales Karzinom','colorectal cancer'],['Hautmelanom','melanoma'],['Harnblasenkarzinom','bladder cancer'],['Nierenzellkarzinom','renal cell carcinoma'],['Pankreaskarzinom','pancreatic cancer'],['Magenkarzinom','stomach cancer'],['Leberkarzinom','hepatocellular carcinoma'],['Endometriumkarzinom','endometrial cancer'],['Zervixkarzinom','uterine cervical cancer'],['Ovarialkarzinom','ovarian cancer'],['Schilddrüsenkarzinom','thyroid cancer'],['Kopf-Hals-Karzinom','head and neck cancer'],['Ösophaguskarzinom','esophageal cancer'],['Non-Hodgkin-Lymphom','non-hodgkin lymphoma'],['Leukämien','leukemia'],['Multiples Myelom','multiple myeloma'],['Hirntumoren','brain cancer']];
-let current=null,studies=[],token=null,loading=false,map=null,view='list',ctisPage=1,ctisHasMore=false,ctisLoading=false,ctisError='',ctisStand='',ctisAusCache=false,page='home';
-let mapRenderToken=0;
-let geoFilter={active:false,lat:null,lon:null,radius:200,label:''};
-const app=document.getElementById('app'),side=document.getElementById('entities');
-const geocodeCache=new Map();
-const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const source=s=>s?._source||'CTGOV';
-const german=s=>source(s)==='CTIS'?(s.locations||[]):(s?.protocolSection?.contactsLocationsModule?.locations||[]).filter(x=>/^(Germany|Deutschland)$/i.test(x.country||''));
-const cervicalTerms=['cervical cancer','cervix cancer','cancer of the cervix','uterine cervical','cervical carcinoma','carcinoma of cervix','malignant neoplasm of cervix','cervix uteri'];
-const cervicalNonCancer=['cervical spine','cervical verte','cervical spinal','cervical stiffness','cervical lymphatic exclusion','cervical lymph node','cervical esoph','cervical oesoph'];
-const cervicalRelevant=s=>{const p=s.protocolSection||{},c=p.conditionsModule||{},i=p.identificationModule||{};const hay=[...(c.conditions||[]),...(c.keywords||[]),i.briefTitle||'',i.officialTitle||''].join(' ').toLowerCase();const hasCervix=cervicalTerms.some(x=>hay.includes(x));return hasCervix&&!cervicalNonCancer.some(x=>hay.includes(x))};
-const eligible=s=>{const p=s.protocolSection||{},d=p.designModule||{},ph=d.phases||[];return d.studyType==='INTERVENTIONAL'&&(ph.includes('PHASE2')||ph.includes('PHASE3'))&&!ph.includes('PHASE4')&&['RECRUITING','NOT_YET_RECRUITING'].includes(status(s))&&german(s).length>0&&(current!==11||cervicalRelevant(s))};
-const title=s=>source(s)==='CTIS'?(s.ctTitle||'Ohne Titel'):(s.protocolSection?.identificationModule?.briefTitle||'Ohne Titel');
-const id=s=>source(s)==='CTIS'?s.ctNumber:s.protocolSection?.identificationModule?.nctId;
-const phaseText=s=>source(s)==='CTIS'?(s.trialPhase||'Phase nicht angegeben'):((s.protocolSection?.designModule?.phases||[]).join(' / ')||'Phase nicht angegeben');
-const studyStatus=s=>source(s)==='CTIS'?(s.ctStatusLabel||'Status nicht angegeben'):status(s);
-const status=s=>s.protocolSection?.statusModule?.overallStatus;
-function sidebar(){side.innerHTML=entities.map((e,i)=>`<button class="entity ${i===current&&page==='studies'?'active':''}" data-i="${i}">${esc(e[0])}</button>`).join('');side.querySelectorAll('button').forEach(b=>b.onclick=()=>select(+b.dataset.i))}
-function navigateHash(hash){history.pushState(null,'',hash);handleRoute()}
-function renderHome(){page='home';current=null;destroyMap();sidebar();app.innerHTML=`<section class="home-card"><h2>Willkommen beim Bundesstudienanzeiger - Onkologie</h2><p class="lead">Dieses unabhängige Informationsportal bündelt öffentlich verfügbare Angaben zu interventionellen onkologischen Studien aus ClinicalTrials.gov und dem Clinical Trials Information System (CTIS).</p><p>Es soll Patientinnen und Patienten, Angehörigen sowie medizinischem Fachpersonal eine übersichtliche und möglichst zeitnahe Orientierung bieten. Klinische Studien können den Zugang zu neuartigen Therapieverfahren eröffnen, deren Nutzen und Risiken noch wissenschaftlich untersucht werden.</p><div class="home-points"><div class="home-point"><strong>Mehrere Register</strong>Studieninformationen aus internationalen und europäischen Quellen werden gemeinsam dargestellt.</div><div class="home-point"><strong>Standortsuche</strong>Listen- und Kartenansicht helfen bei der Suche nach Studienzentren in Deutschland.</div><div class="home-point"><strong>Aktuelle Übersicht</strong>Status und Registerangaben werden beim Aufruf aus den verfügbaren Quellen geladen.</div></div><div class="notice"><b>Wichtiger Hinweis:</b> Die Auflistung kann trotz sorgfältiger Auswahl unvollständig, verzögert oder fehlerhaft sein. Der Dienst ersetzt keine ärztliche Beratung, nimmt keine Prüfung der individuellen Eignung vor und vermittelt keine Studienteilnahme. Maßgeblich sind ausschließlich die Angaben der offiziellen Register und der jeweiligen Studienzentren. Eine Gewähr für Richtigkeit, Vollständigkeit und Aktualität wird nicht übernommen.</div><div class="home-actions"><button type="button" id="startStudies">Studien nach Tumorentität auswählen</button></div></section>`;document.getElementById('startStudies').onclick=()=>select(0)}
-function renderImprint(){page='imprint';current=null;destroyMap();sidebar();app.innerHTML=`<article class="legal-page"><h2>Impressum</h2><h3>Angaben zum Diensteanbieter</h3><p>Dr. Lukas Rief<br>Innere Wiener Str. 55<br>81667 München<br>Deutschland</p><p>E-Mail: <a href="mailto:kontakt@bundesstudienanzeiger.de">kontakt@bundesstudienanzeiger.de</a></p><h3>Verantwortlich für das redaktionelle Angebot</h3><p>Lukas Rief<br>Innere Wiener Str. 55<br>81667 München</p><h3>Hinweis zum Informationsangebot</h3><p>Der Bundesstudienanzeiger - Onkologie ist ein unabhängiges Informationsangebot und keine Behörde, medizinische Beratung oder Studienvermittlung. Die Bezeichnung begründet keine Verbindung zu einer Bundesbehörde.</p></article>`}
-function renderPrivacy(){page='privacy';current=null;destroyMap();sidebar();app.innerHTML=`<article class="legal-page"><h2>Datenschutzerklärung</h2><h3>1. Verantwortlicher</h3><p>Dr. Lukas Rief<br>Innere Wiener Str. 55<br>81667 München<br>E-Mail: <a href="mailto:kontakt@bundesstudienanzeiger.de">kontakt@bundesstudienanzeiger.de</a></p><h3>2. Bereitstellung und Hosting</h3><p>Beim Aufruf der Website verarbeitet der Hostinganbieter technisch erforderliche Verbindungsdaten, insbesondere IP-Adresse, Datum und Uhrzeit des Abrufs, aufgerufene Datei, Referrer sowie Browser- und Geräteinformationen. Die Verarbeitung dient der sicheren und funktionsfähigen Bereitstellung der Website. Rechtsgrundlage ist Art. 6 Abs. 1 Buchst. f DSGVO. Das berechtigte Interesse liegt im sicheren Betrieb dieses Informationsangebots.</p><p>Die Website wird über Netlify bereitgestellt. Dabei kann eine Verarbeitung von Daten durch Netlify und verbundene Dienstleister stattfinden. Vor dem produktiven Betrieb sollten die aktuellen Vertrags-, Auftragsverarbeitungs- und Drittlandinformationen des konkret verwendeten Netlify-Kontos geprüft und hier ergänzt werden.</p><h3>3. Karten und Standortsuche</h3><p>Die Kartenansicht lädt Kartenkacheln von OpenStreetMap. Bei der Nutzung werden technisch erforderliche Daten wie IP-Adresse, Browserinformationen, Zeitpunkt und Referrer an die OpenStreetMap Foundation übermittelt. Die Suche nach Orten und Postleitzahlen nutzt Nominatim auf Grundlage von OpenStreetMap-Daten. Suchbegriffe werden erst übermittelt, wenn die Standortsuche verwendet wird. Rechtsgrundlage ist Art. 6 Abs. 1 Buchst. f DSGVO; das berechtigte Interesse besteht in der Darstellung und geografischen Filterung von Studienstandorten.</p><h3>4. Klinische Studienregister</h3><p>Zur Anzeige aktueller Studiendaten ruft die Website Informationen von ClinicalTrials.gov und dem Clinical Trials Information System (CTIS) der Europäischen Arzneimittel-Agentur ab. Dabei können die IP-Adresse und technische Zugriffsdaten an die jeweiligen Betreiber übermittelt werden. Rechtsgrundlage ist Art. 6 Abs. 1 Buchst. f DSGVO. Das berechtigte Interesse besteht in der aktuellen registerübergreifenden Studieninformation.</p><h3>5. Externe Programmdateien</h3><p>Die Kartenbibliothek Leaflet und zugehörige Formatdateien werden derzeit über das Content Delivery Network unpkg geladen. Dabei kann die IP-Adresse an den CDN-Anbieter übermittelt werden. Für einen datenschutzärmeren Betrieb empfiehlt sich, diese Dateien künftig lokal auf derselben Domain bereitzustellen.</p><h3>6. Cookies und Tracking</h3><p>Diese Website setzt nach aktuellem Entwicklungsstand keine Analyse-, Marketing- oder Profiling-Cookies ein und verwendet kein eigenes Nutzertracking. Ein Einwilligungsbanner ist nur erforderlich, wenn später einwilligungspflichtige Dienste ergänzt werden.</p><h3>7. Speicherdauer</h3><p>Der Betreiber speichert über die Website selbst keine Suchbegriffe oder Standortfilter dauerhaft. Technische Protokolldaten des Hosters werden nach dessen geltenden Aufbewahrungsfristen gelöscht. Die konkreten Fristen sind anhand der produktiven Netlify-Konfiguration zu prüfen und in dieser Erklärung zu ergänzen.</p><h3>8. Ihre Rechte</h3><p>Sie haben nach Maßgabe der DSGVO insbesondere das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch. Außerdem können Sie sich bei einer Datenschutzaufsichtsbehörde beschweren. Für Bayern ist grundsätzlich das Bayerische Landesamt für Datenschutzaufsicht zuständig, soweit keine andere Aufsichtsbehörde einschlägig ist.</p><h3>9. Stand</h3><p>Stand: Oktober 2026</p></article>`}
-function handleRoute(){const hash=location.hash||'#start';if(hash==='#impressum')renderImprint();else if(hash==='#datenschutz')renderPrivacy();else if(hash.startsWith('#studien-')){const slug=decodeURIComponent(hash.slice(9));const i=entities.findIndex(e=>e[0].toLowerCase().replace(/[^a-z0-9äöüß]+/g,'-')===slug);select(i>=0?i:0,false)}else renderHome()}
-function destroyMap(){if(map){map.remove();map=null}}
-function distanceKm(a,b,c,d){const r=6371,toRad=x=>x*Math.PI/180,dp=toRad(c-a),dl=toRad(d-b);const q=Math.sin(dp/2)**2+Math.cos(toRad(a))*Math.cos(toRad(c))*Math.sin(dl/2)**2;return 2*r*Math.asin(Math.sqrt(q))}
-function locationDistance(l){if(!geoFilter.active||!l.geoPoint)return null;const la=Number(l.geoPoint.lat),lo=Number(l.geoPoint.lon);return Number.isFinite(la)&&Number.isFinite(lo)?distanceKm(geoFilter.lat,geoFilter.lon,la,lo):null}
-function matchingLocations(s){const loc=german(s);if(!geoFilter.active)return loc;return loc.filter(l=>{const d=locationDistance(l);return d!==null&&d<=geoFilter.radius})}
-function studyStatusForFilter(s){return source(s)==='CTIS'?(s.localStatusLabel||s.ctStatusLabel||''):status(s)}
-function sortByDistance(rows){if(!geoFilter.active)return rows;return rows.map(s=>{const ds=matchingLocations(s).map(l=>locationDistance(l)).filter(d=>d!==null);return{s,d:ds.length?Math.min(...ds):Infinity}}).sort((a,b)=>a.d-b.d).map(x=>x.s)}
-const CONDITION_TERMS={'endometriumkarzinom':['endometrial','endometrium','uterine corpus','uterus','corpus uteri'],'zervixkarzinom':['cervical cancer','cervix uteri','uterine cervical'],'ovarialkarzinom':['ovarian','fallopian','peritoneal'],'mammakarzinom':['breast'],'prostatakarzinom':['prostate'],'lungenkarzinom':['lung','pulmonary','nsclc','sclc'],'kolorektales-karzinom':['colorectal','colon','rectal','rectum'],'hautmelanom':['melanoma'],'harnblasenkarzinom':['bladder','urothelial'],'nierenzellkarzinom':['renal cell','kidney'],'pankreaskarzinom':['pancrea'],'magenkarzinom':['gastric','stomach','gastroesophageal'],'leberkarzinom':['hepatocellular','liver'],'schilddruesenkarzinom':['thyroid'],'kopf-hals-karzinom':['head and neck','head neck','oral cavity','oropharyn','laryn'],'oesophaguskarzinom':['esophageal','oesophageal'],'non-hodgkin-lymphom':['lymphoma'],'leukaemien':['leukemia','leukaemia'],'multiples-myelom':['myeloma'],'hirntumoren':['glioma','glioblastoma','brain']};
-function conditionRelevant(s){const slug=slugOf(entities[current][0]);const terms=CONDITION_TERMS[slug];if(!terms)return true;const p=s.protocolSection||{},c=p.conditionsModule||{},i=p.identificationModule||{};const hay=[].concat(c.conditions||[],c.keywords||[]).join(' ').toLowerCase();return terms.some(function(t){return hay.indexOf(t)>=0})}
-function filteredStudies(){const q=(document.getElementById('search')?.value||'').toLowerCase(),st=document.getElementById('status')?.value||'';return sortByDistance(studies.filter(s=>(!st||statusClass(studyStatusForFilter(s))===statusClass(st))&&(!q||[title(s),id(s),source(s),...german(s).map(l=>(l.city||'')+' '+(l.facility||'')+' '+(l.zip||''))].join(' ').toLowerCase().includes(q))&&(!geoFilter.active||matchingLocations(s).length>0)))}
-function render(){destroyMap();app.innerHTML=`<h2>${esc(entities[current][0])}</h2><div class="toolbar"><input id="search" aria-label="Studien durchsuchen" placeholder="Studientitel, NCT-/EUCT-Nummer, Ort, PLZ oder Zentrum suchen"><select id="status" aria-label="Status filtern"><option value="">Alle zulässigen Status</option><option value="RECRUITING">Recruiting</option><option value="NOT_YET_RECRUITING">Not yet recruiting</option></select></div><section class="geo-panel" aria-labelledby="geo-title"><h3 id="geo-title">Standorte nach Entfernung filtern</h3><p class="muted geo-help">Der Ortsfilter gilt gleichermaßen für Listen- und Kartenansicht.</p><div class="geo-fields"><input id="place" autocomplete="postal-code" placeholder="Ort oder PLZ, z. B. 10115 Berlin" value="${esc(geoFilter.label)}"><select id="radius" aria-label="Umkreis"><option value="25">25 km</option><option value="50">50 km</option><option value="100">100 km</option><option value="200">200 km</option><option value="300">300 km</option><option value="500">500 km</option></select><button class="geo-apply" id="geoApply">Umkreis anwenden</button><button class="geo-reset" id="geoReset" ${geoFilter.active?'':'disabled'}>Zurücksetzen</button></div><p class="muted geo-status" id="geoStatus" aria-live="polite">${geoFilter.active?esc('Aktiv: '+geoFilter.label+' · '+geoFilter.radius+' km Umkreis'):''}</p></section><p id="ctisStatus" class="ctis-zeile" aria-live="polite"></p><div class="viewbar"><div class="viewtabs" role="tablist" aria-label="Darstellung"><button class="viewtab ${view==='list'?'active':''}" data-view="list" role="tab">Liste</button><button class="viewtab ${view==='map'?'active':''}" data-view="map" role="tab">Karte</button></div><p class="muted" id="counter"></p></div><div id="results"></div><button id="more" style="display:none">Weitere Studien laden</button><div class="notice">Eingeschlossen: interventionelle Studien mit Phase II oder III, einschließlich kombinierter Phase I/II; reine Phase I und Phase IV ausgeschlossen. Eine therapeutische Zielsetzung ist anhand der Registerdaten nicht immer zuverlässig maschinell prüfbar; reine Diagnostikstudien können daher vereinzelt enthalten sein. Registerstatus und Standortstatus können voneinander abweichen. Angaben vor klinischer Verwendung beim Studienzentrum bestätigen.</div>`;
-document.getElementById('radius').value=String(geoFilter.radius);document.getElementById('search').oninput=updateResults;document.getElementById('status').onchange=updateResults;document.getElementById('more').onclick=()=>Promise.all([token?load():Promise.resolve(),ctisHasMore?loadCtis():Promise.resolve()]);document.getElementById('geoApply').onclick=applyGeoFilter;document.getElementById('geoReset').onclick=resetGeoFilter;document.getElementById('place').onkeydown=e=>{if(e.key==='Enter')applyGeoFilter()};document.querySelectorAll('.viewtab').forEach(b=>b.onclick=()=>{view=b.dataset.view;document.querySelectorAll('.viewtab').forEach(x=>x.classList.toggle('active',x.dataset.view===view));updateResults()});updateResults();aktualisiereHinweis()}
-function updateResults(){const rows=filteredStudies(),counter=document.getElementById('counter'),results=document.getElementById('results');if(!counter||!results)return;const siteCount=rows.reduce((n,s)=>n+matchingLocations(s).length,0);const standText=ctisStand?(' · CTIS-Datenstand: '+new Date(ctisStand).toLocaleDateString('de-DE')):'';counter.textContent=`${rows.length} Studien · ${siteCount} Standorte${loading||ctisLoading?' · Lade weitere Daten ...':''}${ctisError==='archiv'?' · CTIS-Archivdaten':''}${ctisLoading?' · CTIS wird im Hintergrund geladen':''}${standText}`;if(view==='map')renderOverviewMapAsync(rows);else{renderList(rows)}aktualisiereHinweis();const more=document.getElementById('more');more.style.display=(token||ctisHasMore)?'inline-block':'none';more.disabled=loading||ctisLoading;aktualisiereHinweis()}
-function statusClass(v){const x=String(v||'').toUpperCase();if(x==='RECRUITING'||x.includes('ONGOING, RECRUITING')||x.includes('AUTHORISED, RECRUITING'))return'status-recruiting';if(x==='NOT_YET_RECRUITING'||x.includes('RECRUITMENT PENDING'))return'status-pending';return'status-neutral'}
-function flattenText(v){if(v===null||v===undefined)return'';if(typeof v==='string'||typeof v==='number')return String(v);if(Array.isArray(v))return v.map(flattenText).filter(Boolean).join(', ');if(typeof v==='object')return Object.values(v).map(flattenText).filter(Boolean).join(' · ');return''}
-function statusBadge(v){const txt=flattenText(v)||'Status nicht angegeben';return`<span class="status-label ${statusClass(txt)}">${esc(txt)}</span>`}
-function renderList(rows){destroyMap();const results=document.getElementById('results');results.innerHTML=rows.map(s=>{const loc=matchingLocations(s);const st=source(s)==='CTIS'?(s.localStatusLabel||s.ctStatusLabel):status(s);const ph=source(s)==='CTIS'?(s.phaseLabel||s.trialPhase||''):(s.protocolSection?.designModule?.phases||[]).join(' / ');return `<article class="study" data-id="${esc(id(s))}" tabindex="0"><a class="study-link" href="#" data-id="${esc(id(s))}"><b>${esc(title(s))}</b></a><div class="muted">${esc(id(s))} · ${esc(source(s)==='CTIS'?'CTIS':'ClinicalTrials.gov')}${ph?' · '+esc(ph):''} · ${statusBadge(st)} · <span class="location-highlight">${loc.length} passende Standorte</span></div></article>`}).join('')||'<div class="empty-state">Keine passenden Studien in den geladenen Daten.</div>';results.querySelectorAll('.study').forEach(x=>{x.onclick=e=>{e.preventDefault();detail(x.dataset.id)};x.onkeydown=e=>{if(e.key==='Enter'||e.key===' ')detail(x.dataset.id)}})}
-function cityFromAddress(l){if(l.city)return l.city;const t=String(l.address||'');const m=t.split(',').map(function(x){return x.trim()}).filter(Boolean);if(m.length>=2)return m[m.length-2].replace(/^\d{5}\s*/,'');return ''}
-function siteGeoKey(l){return [l.street||l.address||'',[l.zip||'',cityFromAddress(l)].filter(Boolean).join(' ')].filter(Boolean).join(', ')}
-function ortSchluessel(l){
-const stadt=cityFromAddress(l);
-const plz=String(l.zip||'').trim();
-if(plz&&stadt)return plz+' '+stadt;
-if(stadt)return stadt;
-return '';
+/* Bundesstudienanzeiger - Onkologie
+   Die Website liest ausschließlich die vorbereiteten Datendateien:
+   data/studies.json, data/sites.json und data/plz-de.json. */
+
+var DATEN = { studien: null, zentren: null, plz: null, stand: '' };
+var studies = [];
+var current = null, page = 'home', view = 'list', map = null, mapRenderToken = 0;
+var geoFilter = { active: false, lat: null, lon: null, radius: 200, label: '' };
+var app = document.getElementById('app'), side = document.getElementById('entities');
+
+function esc(s) {
+  return String(s === null || s === undefined ? '' : s).replace(/[&<>"']/g, function (c) {
+    return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+  });
 }
-function ortSchluessel(l){const stadt=cityFromAddress(l);const plz=String(l.zip||'').trim();if(plz&&stadt)return plz+' '+stadt;if(stadt)return stadt;return ''}
-async function ensureCoordinates(rows){
-const offen=new Map();
-rows.forEach(function(s){german(s).forEach(function(l){
-if(Number.isFinite(Number(l.geoPoint&&l.geoPoint.lat)))return;
-const key=ortSchluessel(l);
-if(key&&!offen.has(key))offen.set(key,l);
-})});
-const keys=[...offen.keys()];
-if(!keys.length)return;
-const geo={};
-for(let i=0;i<keys.length;i+=40){
-const teil=keys.slice(i,i+40);
-try{const r=await fetch('/api/geo?keys='+encodeURIComponent(teil.join('|')));const j=await r.json();if(j&&j.geo)Object.assign(geo,j.geo)}catch(e){}
+function slugOf(name) {
+  return String(name).toLowerCase().replace(/[^a-z0-9äöüß]+/g, '-');
 }
-rows.forEach(function(s){german(s).forEach(function(l){
-if(Number.isFinite(Number(l.geoPoint&&l.geoPoint.lat)))return;
-const key=ortSchluessel(l);
-const hit=key?geo[key]:null;
-if(hit&&Number.isFinite(hit.lat)){l.geoPoint={lat:Number(hit.lat),lon:Number(hit.lon)}}
-})});
+function id(s) { return s.nct || s.euct || ''; }
+function title(s) { return s.titel || 'Ohne Titel'; }
+function phaseText(s) { return s.phase || 'Phase nicht angegeben'; }
+function studyStatus(s) { return s.statusDeutsch || s.status || 'Status nicht angegeben'; }
+function quellenText(s) { return (s.quellen || []).map(function (q) { return q === 'CTIS' ? 'CTIS' : 'ClinicalTrials.gov'; }).join(' + '); }
+function zentren(s) { return Array.isArray(s.zentren) ? s.zentren : []; }
+function mitKoordinaten(s) { return zentren(s).filter(function (z) { return Number.isFinite(Number(z.lat)) && Number.isFinite(Number(z.lon)); }); }
+
+function statusClass(v) {
+  var x = String(v || '').toUpperCase();
+  if (x.indexOf('PENDING') >= 0 || x.indexOf('PENDING') >= 0) return 'status-pending';
+  if (x === 'RECRUITING' || x.indexOf('RECRUITING') >= 0) return 'status-recruiting';
+  if (x.indexOf('NOT_YET') >= 0 || x.indexOf('RECRUITMENT PENDING') >= 0) return 'status-pending';
+  return 'status-neutral';
 }
-function allDuplicates(source,la,lo){try{studies.forEach(function(s){german(s).forEach(function(l){if(l===source)return;if(siteGeoKey(l)!==siteGeoKey(source))return;l.geoPoint={lat:la,lon:lo}})})}catch(e){}}
-function extractPostcode(value){const match=value.match(/(?:^|\D)(\d{5})(?:\D|$)/);return match?match[1]:''}
-function exactPostcodeResult(rows,postcode){return rows.find(x=>String(x.address?.postcode||'').trim()===postcode)||null}
-async function geocodeInput(value){const postcode=extractPostcode(value);if(postcode){let rows=[];try{rows=await nominatimSearch(new URLSearchParams({postalcode:postcode,country:'Deutschland'}))}catch(e){rows=[]}let hit=exactPostcodeResult(rows,postcode);if(!hit){try{rows=await nominatimSearch(new URLSearchParams({q:postcode+', Deutschland'}))}catch(e){rows=[]}hit=exactPostcodeResult(rows,postcode)}if(hit)return{hit,label:postcode,method:'PLZ'};const placeOnly=value.replace(postcode,' ').replace(/[,;-]+/g,' ').replace(/\s+/g,' ').trim();if(placeOnly){rows=await nominatimSearch(new URLSearchParams({city:placeOnly,country:'Deutschland'}));if(rows.length)return{hit:rows[0],label:postcode+' '+placeOnly,method:'Ort (PLZ nicht eindeutig gefunden)'}}return null}try{const rows=await nominatimSearch(new URLSearchParams({q:value+', Deutschland'}));return rows.length?{hit:rows[0],label:value,method:'Ort'}:null}catch(e){return null}}
-async function applyGeoFilter(){const place=document.getElementById('place').value.trim(),radius=Number(document.getElementById('radius').value),statusEl=document.getElementById('geoStatus'),btn=document.getElementById('geoApply');if(!place){statusEl.textContent='Bitte geben Sie einen Ort oder eine PLZ ein.';return}btn.disabled=true;statusEl.textContent='PLZ beziehungsweise Ort wird gesucht ...';try{let found=null;try{found=await geocodeInput(place)}catch(fehlerSuche){}if(!found){statusEl.textContent='PLZ oder Ort wurde nicht gefunden. Bitte Eingabe prüfen.';return}const lat=Number(found.hit.lat),lon=Number(found.hit.lon);if(!Number.isFinite(lat)||!Number.isFinite(lon))throw Error('Ungültige Koordinaten');geoFilter={active:true,lat,lon,radius,label:found.label};document.getElementById('geoReset').disabled=false;statusEl.textContent='Aktiv: '+found.label+' · '+radius+' km Umkreis · Grundlage: '+found.method;updateResults()}catch(e){statusEl.textContent='Die Standortsuche ist derzeit nicht verfügbar ('+e.message+'). Bitte später erneut versuchen.'}finally{btn.disabled=false}}
-function resetGeoFilter(){geoFilter={active:false,lat:null,lon:null,radius:Number(document.getElementById('radius')?.value||200),label:''};const place=document.getElementById('place');if(place)place.value='';const reset=document.getElementById('geoReset');if(reset)reset.disabled=true;const s=document.getElementById('geoStatus');if(s)s.textContent='';updateResults()}
-async function select(i,updateHash=true){page='studies';current=i;studies=[];token=null;ctisPage=1;ctisHasMore=false;ctisError='';ctisStand='';ctisAusCache=false;ctisFertig=false;ctisAnzahl=0;geoFilter={active:false,lat:null,lon:null,radius:200,label:''};if(updateHash){const slug=entities[i][0].toLowerCase().replace(/[^a-z0-9äöüß]+/g,'-');history.pushState(null,'','#studien-'+slug)}sidebar();render();await load();loadCtisImHintergrund()}
-async function load(){if(loading)return;loading=true;updateResults();try{const p=new URLSearchParams({'query.cond':entities[current][1],'query.locn':'Germany','filter.overallStatus':'RECRUITING,NOT_YET_RECRUITING','filter.advanced':'AREA[StudyType](INTERVENTIONAL) AND (AREA[Phase](PHASE2) OR AREA[Phase](PHASE3))','pageSize':'100','format':'json'});if(token)p.set('pageToken',token);const r=await fetch('https://clinicaltrials.gov/api/v2/studies?'+p);if(!r.ok)throw Error('HTTP '+r.status);const j=await r.json();const known=new Set(studies.map(id));(j.studies||[]).filter(eligible).forEach(s=>{if(!known.has(id(s)))studies.push(s)});token=j.nextPageToken||null}catch(e){document.getElementById('results')?.insertAdjacentHTML('afterend',`<p class="notice">Daten konnten nicht geladen werden: ${esc(e.message)}. Bitte Verbindung und Browser-CORS prüfen.</p>`)}finally{loading=false;updateResults()}}
-const ctisStatusLabels={1:'Under evaluation',2:'Authorised, recruitment pending',3:'Authorised, recruiting',4:'Ongoing, recruiting',5:'Ongoing, recruitment ended',6:'Temporarily halted',7:'Suspended',8:'Ended',9:'Expired',10:'Revoked',11:'Not authorised',12:'Cancelled'};
-const ctisCondition=()=>current===11?'uterine cervical cancer':entities[current][1];
-const ctisRelevant=r=>{if(current!==11)return true;const hay=[r.conditions||'',r.ctTitle||''].join(' ').toLowerCase(),hasCervix=cervicalTerms.some(x=>hay.includes(x));return hasCervix&&!cervicalNonCancer.some(x=>hay.includes(x))};
-function normalizeCtisRow(r){return{_source:'CTIS',ctNumber:r.ctNumber,ctTitle:r.ctTitle||'Ohne Titel',trialPhase:r.trialPhase||'',conditions:r.conditions||'',ctStatusLabel:ctisStatusLabels[Number(r.ctStatus)]||String(r.ctStatus||''),locations:[],_raw:r}}
-function loadCtisImHintergrund(){ctisLoading=true;ctisFertig=false;aktualisiereHinweis();loadCtis().then(function(){ctisFertig=true}).catch(function(){}).finally(function(){ctisLoading=false;aktualisiereHinweis();updateResults()})}
-function aktualisiereHinweis(){
-const el=document.getElementById('ctisStatus');
-if(!el)return;
-if(ctisLoading){
-el.className='ctis-zeile laden';
-el.textContent='CTIS-Daten werden im Hintergrund geladen …';
-}
-else if(ctisFertig&&ctisAnzahl>0){
-el.className='ctis-zeile fertig';
-el.innerHTML='<b>CTIS-Daten geladen</b> · '+ctisAnzahl+' Studien ergänzt'
-+' <button type="button" id="ctisNeu" class="ctis-btn">Ansicht aktualisieren</button>';
-const b=document.getElementById('ctisNeu');
-if(b)b.onclick=function(){updateResults()};
-}
-else if(ctisFertig&&ctisError==='archiv'){
-el.className='ctis-zeile laden';
-el.textContent='CTIS war nicht erreichbar – es werden gespeicherte Daten angezeigt.';
-}
-else{
-el.className='ctis-zeile';
-el.textContent='';
-}
-}
-async function loadCtis(){
-const slug=slugOf(entities[current][0]);
-const known={};studies.forEach(function(s){known[id(s)]=true});
-let neu=0, daten=null;
-try{
-const d=await fetch('/api/ctis?entity='+encodeURIComponent(slug)+'&term='+encodeURIComponent(entities[current][1]));
-const j=await d.json();
-if(j&&j.ok&&j.data&&j.data.length){daten=j;ctisStand=j.stand||'';if(j.aus_cache)ctisError='archiv'}
-else if(j&&!j.ok){ctisError=j.error||'fehler'}
-}catch(e){ctisError='fehler'}
-if(!daten){
-try{
-const d2=await fetch('/api/ctis-daten');
-const j2=await d2.json();
-if(j2&&j2.ok&&j2.byEntity&&j2.byEntity[slug]){daten={data:j2.byEntity[slug]};ctisStand=j2.stand||'';ctisError='archiv'}
-}catch(e){}
-}
-if(daten&&daten.data){daten.data.forEach(function(x){
-if(!x||!x.ctNumber)return;
-if(known[x.ctNumber])return;
-known[x.ctNumber]=true;neu++;
-studies.push({_source:'CTIS',ctNumber:x.ctNumber,ctTitle:x.ctTitle||'Ohne Titel',trialPhase:x.trialPhase||x.phaseLabel||'',phaseLabel:x.phaseLabel||'',localStatusLabel:x.localStatusLabel||x.ctStatusLabel||'',locations:Array.isArray(x.locations)?x.locations:[]});
-})}
-ctisAnzahl=neu;
-}
-function findCtisByNct(nct){for(let i=0;i<studies.length;i++){const s=studies[i];if(source(s)==='CTIS'&&s.nctNumber&&s.nctNumber.toUpperCase()===String(nct).toUpperCase())return s}return null}
-async function detailCtis(euct){
-destroyMap();
-app.innerHTML='<p>Lade CTIS-Studiendetails ...</p>';
-try{
-const r=await fetch('/api/ctis?action=trial&euct='+encodeURIComponent(euct));
-if(!r.ok)throw Error('HTTP '+r.status);
-const j=await r.json();
-if(!j.ok)throw Error(j.error||'CTIS-Studie nicht verfügbar');
-const t=j.trial||{};
-let row={};
-for(let n=0;n<studies.length;n++){if(id(studies[n])===euct)row=studies[n]}
-const title=t.title||row.ctTitle||euct;
-const statusLabel=t.statusLabel||row.ctStatusLabel||'';
-const locs=Array.isArray(t.locations)?t.locations:[];
-let html='<button class="back" id="back">← Zur Studienübersicht</button><div class="details">';
-html+='<h2>'+esc(title)+'</h2>';
-html+='<p><span class="tag">EUCT '+esc(euct)+'</span>'+statusBadge(statusLabel)+'</p>';
-html+='<h3>Trial Phase</h3><p>'+esc(t.phase||'Nicht angegeben')+'</p>';
-if(t.objective)html+='<h3>Main objective</h3><p>'+esc(t.objective)+'</p>';
-if(t.summary)html+='<h3>Zusammenfassung</h3><p>'+esc(t.summary)+'</p>';
-if(t.sponsor)html+='<p class="muted">Sponsor: '+esc(t.sponsor)+'</p>';
-html+='<h3>Studienzentren in Deutschland ('+locs.length+')</h3>';
-if(locs.length){
-html+='<div class="loc-table-wrap"><table class="loc-table"><thead><tr><th>Site city</th><th>Organisation name</th><th>Name</th><th>Email</th><th>Telephone number</th><th>Department name</th><th>Site location</th><th>OMS ID</th></tr></thead><tbody>';
-for(let n=0;n<locs.length;n++){
-const l=locs[n];
-html+='<tr><td>'+esc(l.city||'')+'</td><td>'+esc(l.facility||'')+'</td><td>'+esc(l.contact||'')+'</td><td>'+esc(l.email||'')+'</td><td>'+esc(l.phone||'')+'</td><td>'+esc(l.department||'')+'</td><td>'+esc(l.address||'')+'</td><td>'+esc(l.omsId||'')+'</td></tr>';
-}
-html+='</tbody></table></div>';
-}else{
-html+='<div class="notice">Im abgerufenen CTIS-Datensatz sind keine Standorte für Deutschland enthalten. Die vollständige Liste steht im Abschnitt Locations and contact points des offiziellen Eintrags.</div>';
-}
-html+='<h3>Originalstudie</h3><p><a href="https://euclinicaltrials.eu/ctis-public/view/'+encodeURIComponent(euct)+'" target="_blank" rel="noopener">Vollständiger Eintrag im CTIS ↗</a></p>';
-html+='<p class="muted">Angaben aus dem Clinical Trials Information System (CTIS).</p>';
-html+='</div>';
-app.innerHTML=html;
-document.getElementById('back').onclick=render;
-}catch(err){
-app.innerHTML='<button id="back">← Zurück</button><p>CTIS-Studie konnte nicht geladen werden: '+esc(err.message)+'</p>';
-document.getElementById('back').onclick=render;
-}
+function statusBadge(v) {
+  var txt = v || 'Status nicht angegeben';
+  return '<span class="status-label ' + statusClass(txt) + '">' + esc(txt) + '</span>';
 }
 
-async function detail(nct){if(/^20\d{2}-\d{6}-\d{2}-\d{2}$/.test(nct)){const viaCtis=findCtisByNct(nct);if(viaCtis)return detailCtis(viaCtis.ctNumber);return detailCtis(nct)}
-destroyMap();app.innerHTML='<p>Lade Studiendetails ...</p>';
-try{
-var r=await fetch('https://clinicaltrials.gov/api/v2/studies/'+encodeURIComponent(nct));
-if(!r.ok)throw Error('HTTP '+r.status);
-var s=await r.json(),p=s.protocolSection||{};
-var desc=p.descriptionModule||{},cond=p.conditionsModule||{},ident=p.identificationModule||{},spon=p.sponsorCollaboratorsModule||{},arms=p.armsInterventionsModule||{};
-var loc=german(s);
-var block='<button class="back" id="back">← Zur Studienübersicht</button><div class="details">';
-block+='<h2>'+esc(title(s))+'</h2>';
-block+='<p><span class="tag">'+esc(nct)+'</span>'+statusBadge(status(s))+'<span class="tag">'+esc(phaseText(s)||'Phase nicht angegeben')+'</span></p>';
-if(desc.briefSummary)block+='<h3>Brief Summary</h3><p>'+esc(desc.briefSummary)+'</p>';
-if(desc.detailedDescription)block+='<h3>Detailed Description</h3><p>'+esc(desc.detailedDescription)+'</p>';
-if(ident.officialTitle)block+='<h3>Official Title</h3><p>'+esc(ident.officialTitle)+'</p>';
-var conds=cond.conditions||[];
-if(conds.length)block+='<h3>Conditions</h3><p>'+conds.map(function(c){return '<span class="tag">'+esc(c)+'</span>'}).join('')+'</p>';
-var kw=cond.keywords||[];
-if(kw.length)block+='<h3>Keywords</h3><p>'+kw.slice(0,12).map(function(k){return '<span class="tag">'+esc(k)+'</span>'}).join('')+'</p>';
-if((arms.interventions||[]).length)block+='<h3>Interventionen</h3><ul>'+arms.interventions.map(function(iv){return '<li><b>'+esc(iv.type||'')+'</b> '+esc(iv.name||'')+'</li>'}).join('')+'</ul>';
-var lead=(spon.leadSponsor&&spon.leadSponsor.name)||'';
-if(lead)block+='<h3>Sponsor</h3><p>'+esc(lead)+'</p>';
-block+='<h3>Originalstudie</h3><p><a href="https://clinicaltrials.gov/study/'+encodeURIComponent(nct)+'" target="_blank" rel="noopener">Originalstudie auf ClinicalTrials.gov ↗</a></p>';
-block+='<h3>Studienzentren in Deutschland ('+loc.length+')</h3><div id="locations"></div>';
-block+='<p class="muted">Angaben aus ClinicalTrials.gov. Registerangaben vor klinischer Verwendung beim Studienzentrum bestätigen.</p></div>';
-app.innerHTML=block;
-document.getElementById('back').onclick=render;
-document.getElementById('locations').innerHTML=loc.length?loc.map(function(l){return '<p><b>'+esc(l.facility||'Studienzentrum')+'</b>'+(l.city?' — '+esc(l.city):'')+(l.zip?', '+esc(l.zip):'')+'<br><span class="muted">Standortstatus: '+statusBadge(l.status||'nicht angegeben')+'</span></p>'}).join(''):'<p class="muted">Für diese Studie sind keine deutschen Standorte hinterlegt.</p>';
-}catch(e){app.innerHTML='<button id="back">← Zurück</button><p>Studie konnte nicht geladen werden: '+esc(e.message)+'</p>';document.getElementById('back').onclick=render}}
+/* ---------------- Navigation ---------------- */
 
-document.getElementById('homeLink').onclick=e=>{e.preventDefault();navigateHash('#start')};document.querySelectorAll('[data-page]').forEach(b=>b.onclick=()=>navigateHash(b.dataset.page==='privacy'?'#datenschutz':'#impressum'));window.addEventListener('popstate',handleRoute);sidebar();handleRoute();
+function sidebar() {
+  var box = document.getElementById('entities');
+  if (!box) return;
+  var liste = (DATEN.studien && DATEN.studien.entitaeten) || [];
+  box.innerHTML = liste.map(function (e, i) {
+    return '<button class="entity ' + (i === current && page === 'studien' ? 'active' : '') + '" data-i="' + i + '">' + esc(e.label) + '</button>';
+  }).join('');
+  Array.prototype.forEach.call(box.querySelectorAll('button'), function (b) {
+    b.onclick = function () { select(Number(b.dataset.i)); };
+  });
+}
+function navigateHash(hash) { history.pushState(null, '', hash); handleRoute(); }
+function handleRoute() {
+  var hash = location.hash || '#start';
+  if (hash === '#impressum') { renderImprint(); return; }
+  if (hash === '#datenschutz') { renderPrivacy(); return; }
+  if (hash.indexOf('#studien-') === 0) {
+    var slug = decodeURIComponent(hash.slice(9));
+    var liste = (DATEN.studien && DATEN.studien.entitaeten) || [];
+    var idx = -1;
+    liste.forEach(function (e, i) { if (slugOf(e.label) === slug) idx = i; });
+    select(idx >= 0 ? idx : 0, false);
+    return;
+  }
+  renderHome();
+}
+
+/* ---------------- Startseite und Rechtstexte ---------------- */
+
+function renderHome() {
+  page = 'home'; current = null; destroyMap(); sidebar();
+  app.innerHTML = '<section class="home-card"><h2>Willkommen beim Bundesstudienanzeiger - Onkologie</h2>'
+    + '<p class="lead">Dieses unabhängige Informationsportal bündelt öffentlich verfügbare Angaben zu interventionellen onkologischen Studien aus ClinicalTrials.gov und dem Clinical Trials Information System (CTIS).</p>'
+    + '<p>Es soll Patientinnen und Patienten, Angehörigen sowie medizinischem Fachpersonal eine übersichtliche und möglichst zeitnahe Orientierung bieten. Klinische Studien können den Zugang zu neuartigen Therapieverfahren eröffnen, deren Nutzen und Risiken noch wissenschaftlich untersucht werden.</p>'
+    + '<div class="home-points"><div class="home-point"><strong>Mehrere Register</strong>Studieninformationen aus internationalen und europäischen Quellen werden gemeinsam dargestellt.</div>'
+    + '<div class="home-point"><strong>Standortsuche</strong>Listen- und Kartenansicht helfen bei der Suche nach Studienzentren in Deutschland.</div>'
+    + '<div class="home-point"><strong>Aktueller Datenstand</strong>Die Angaben werden täglich aus den verfügbaren Quellen übernommen und geprüft.</div></div>'
+    + '<div class="notice"><b>Wichtiger Hinweis:</b> Die Auflistung kann trotz sorgfältiger Auswahl unvollständig, verzögert oder fehlerhaft sein. Der Dienst ersetzt keine ärztliche Beratung, nimmt keine Prüfung der individuellen Eignung vor und vermittelt keine Studienteilnahme. Maßgeblich sind ausschließlich die Angaben der offiziellen Register und der jeweiligen Studienzentren. Eine Gewähr für Richtigkeit, Vollständigkeit und Aktualität wird nicht übernommen.</div>'
+    + '<div class="home-actions"><button type="button" id="startStudies">Studien nach Tumorentität auswählen</button></div>'
+    + datenstandHinweis() + '</section>';
+  document.getElementById('startStudies').onclick = function () { select(0); };
+}
+
+function datenstandHinweis() {
+  if (!DATEN.stand) return '';
+  var d = new Date(DATEN.stand);
+  var txt = d.toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' });
+  return '<p class="muted" style="margin-top:18px">Datenstand: ' + txt + ' · Quellen: ClinicalTrials.gov und CTIS</p>';
+}
+
+function renderImprint() {
+  page = 'imprint'; current = null; destroyMap(); sidebar();
+  app.innerHTML = '<article class="legal-page"><h2>Impressum</h2>'
+    + '<h3>Angaben zum Diensteanbieter</h3>'
+    + '<p>Dr. Lukas Rief<br>Innere Wiener Str. 55<br>81667 München<br>Deutschland</p>'
+    + '<p>E-Mail: <a href="mailto:kontakt@bundesstudienanzeiger.de">kontakt@bundesstudienanzeiger.de</a></p>'
+    + '<h3>Verantwortlich für das redaktionelle Angebot</h3>'
+    + '<p>Lukas Rief<br>Innere Wiener Str. 55<br>81667 München</p>'
+    + '<h3>Hinweis zum Informationsangebot</h3>'
+    + '<p>Der Bundesstudienanzeiger - Onkologie ist ein unabhängiges Informationsangebot und keine Behörde, medizinische Beratung oder Studienvermittlung. Die Bezeichnung begründet keine Verbindung zu einer Bundesbehörde.</p>'
+    + '</article>';
+}
+
+function renderPrivacy() {
+  page = 'privacy'; current = null; destroyMap(); sidebar();
+  app.innerHTML = '<article class="legal-page"><h2>Datenschutzerklärung</h2>'
+    + '<h3>1. Verantwortlicher</h3>'
+    + '<p>Dr. Lukas Rief<br>Innere Wiener Str. 55<br>81667 München<br>E-Mail: <a href="mailto:kontakt@bundesstudienanzeiger.de">kontakt@bundesstudienanzeiger.de</a></p>'
+    + '<h3>2. Bereitstellung und Hosting</h3>'
+    + '<p>Beim Aufruf der Website verarbeitet der Hostinganbieter technisch erforderliche Verbindungsdaten, insbesondere IP-Adresse, Datum und Uhrzeit des Abrufs, aufgerufene Datei, Referrer sowie Browser- und Geräteinformationen. Rechtsgrundlage ist Art. 6 Abs. 1 Buchst. f DSGVO.</p>'
+    + '<p>Die Website wird über Netlify bereitgestellt.</p>'
+    + '<h3>3. Kartenansicht</h3>'
+    + '<p>Die Kartenansicht lädt Kartenkacheln von OpenStreetMap. Dabei werden technisch erforderliche Daten wie IP-Adresse, Browserinformationen, Zeitpunkt und Referrer an die OpenStreetMap Foundation übermittelt. Rechtsgrundlage ist Art. 6 Abs. 1 Buchst. f DSGVO; das berechtigte Interesse besteht in der Darstellung der Studienstandorte.</p>'
+    + '<h3>4. Herkunft der Studienangaben</h3>'
+    + '<p>Die angezeigten Studienangaben stammen aus ClinicalTrials.gov und dem Clinical Trials Information System (CTIS) der Europäischen Arzneimittel-Agentur. Sie werden regelmäßig im Voraus abgerufen und als Datendatei bereitgestellt. Beim Besuch dieser Website findet keine Abfrage bei diesen Registern statt.</p>'
+    + '<h3>5. Externe Programmdateien</h3>'
+    + '<p>Die Kartenbibliothek Leaflet wird über ein Content Delivery Network geladen. Dabei kann die IP-Adresse an den Anbieter übermittelt werden.</p>'
+    + '<h3>6. Cookies und Tracking</h3>'
+    + '<p>Diese Website setzt keine Analyse-, Marketing- oder Profiling-Cookies ein und verwendet kein eigenes Nutzertracking.</p>'
+    + '<h3>7. Ihre Rechte</h3>'
+    + '<p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch sowie das Recht auf Beschwerde bei einer Aufsichtsbehörde.</p>'
+    + '<h3>8. Stand</h3><p>Stand: Oktober 2026</p>'
+    + '</article>';
+}
+
+/* ---------------- Studienansicht ---------------- */
+
+function render() {
+  destroyMap();
+  app.innerHTML = '<h2>' + esc(DATEN.studien.entitaeten[current].label) + '</h2>'
+    + '<div class="toolbar"><input id="search" aria-label="Studien durchsuchen" placeholder="Studientitel, NCT-/EUCT-Nummer, Ort, PLZ oder Zentrum suchen">'
+    + '<select id="status" aria-label="Status filtern"><option value="">Alle zulässigen Status</option><option value="RECRUITING">Recruiting</option><option value="NOT_YET_RECRUITING">Not yet recruiting</option></select></div>'
+    + '<section class="geo-panel" aria-labelledby="geo-title"><h3 id="geo-title">Standorte nach Entfernung filtern</h3>'
+    + '<p class="muted geo-help">Der Ortsfilter gilt gleichermaßen für Listen- und Kartenansicht.</p>'
+    + '<div class="geo-fields"><input id="place" autocomplete="postal-code" placeholder="Ort oder PLZ, z. B. 10115 Berlin" value="' + esc(geoFilter.label) + '">'
+    + '<select id="radius" aria-label="Umkreis"><option value="25">25 km</option><option value="50">50 km</option><option value="100">100 km</option><option value="200">200 km</option><option value="300">300 km</option><option value="500">500 km</option></select>'
+    + '<button class="geo-apply" id="geoApply">Umkreis anwenden</button>'
+    + '<button class="geo-reset" id="geoReset" ' + (geoFilter.active ? '' : 'disabled') + '>Zurücksetzen</button></div>'
+    + '<p class="muted geo-status" id="geoStatus" aria-live="polite">' + (geoFilter.active ? esc('Aktiv: ' + geoFilter.label + ' · ' + geoFilter.radius + ' km Umkreis') : '') + '</p></section>'
+    + '<div class="viewbar"><div class="viewtabs" role="tablist" aria-label="Darstellung"><button class="viewtab ' + (view === 'list' ? 'active' : '') + '" data-view="list" role="tab">Liste</button><button class="viewtab ' + (view === 'map' ? 'active' : '') + '" data-view="map" role="tab">Karte</button></div>'
+    + '<p class="muted" id="counter"></p></div>'
+    + '<div id="results"></div>'
+    + '<div class="notice">Eingeschlossen: interventionelle Studien mit Phase II oder III, einschließlich kombinierter Phase I/II; reine Phase I und Phase IV ausgeschlossen. Registerstatus und Standortstatus können voneinander abweichen. Angaben vor klinischer Verwendung beim Studienzentrum bestätigen.</div>'
+    + datenstandHinweis();
+
+  document.getElementById('radius').value = String(geoFilter.radius);
+  document.getElementById('search').oninput = updateResults;
+  document.getElementById('status').onchange = updateResults;
+  document.getElementById('geoApply').onclick = applyGeoFilter;
+  document.getElementById('geoReset').onclick = resetGeoFilter;
+  document.getElementById('place').onkeydown = function (e) { if (e.key === 'Enter') applyGeoFilter(); };
+  Array.prototype.forEach.call(document.querySelectorAll('.viewtab'), function (b) {
+    b.onclick = function () {
+      view = b.dataset.view;
+      Array.prototype.forEach.call(document.querySelectorAll('.viewtab'), function (x) { x.classList.toggle('active', x.dataset.view === view); });
+      updateResults();
+    };
+  });
+  updateResults();
+}
+
+function studienDerEntitaet() {
+  var key = DATEN.studien.entitaeten[current].key;
+  var ids = (DATEN.studien.nachEntitaet && DATEN.studien.nachEntitaet[key]) || [];
+  return ids.map(function (k) { return DATEN.studien.studien[k]; }).filter(Boolean);
+}
+
+function matchingLocations(s) {
+  var liste = mitKoordinaten(s);
+  if (!geoFilter.active) return liste;
+  return liste.filter(function (z) {
+    var d = distanceKm(geoFilter.lat, geoFilter.lon, Number(z.lat), Number(z.lon));
+    return d <= geoFilter.radius;
+  });
+}
+
+function distanceKm(a, b, c, d) {
+  var r = 6371, rad = function (x) { return x * Math.PI / 180; };
+  var dp = rad(c - a), dl = rad(d - b);
+  var q = Math.sin(dp / 2) * Math.sin(dp / 2) + Math.cos(rad(a)) * Math.cos(rad(c)) * Math.sin(dl / 2) * Math.sin(dl / 2);
+  return 2 * r * Math.asin(Math.sqrt(q));
+}
+
+function sortByDistance(rows) {
+  if (!geoFilter.active) return rows;
+  return rows.map(function (s) {
+    var ds = matchingLocations(s).map(function (z) { return distanceKm(geoFilter.lat, geoFilter.lon, Number(z.lat), Number(z.lon)); });
+    return { s: s, d: ds.length ? Math.min.apply(null, ds) : Infinity };
+  }).sort(function (a, b) { return a.d - b.d; }).map(function (x) { return x.s; });
+}
+
+function filteredStudies() {
+  var q = (document.getElementById('search').value || '').toLowerCase();
+  var st = document.getElementById('status').value || '';
+  var rows = studienDerEntitaet().filter(function (s) {
+    if (st && statusClass(studyStatus(s)) !== statusClass(st)) return false;
+    if (q) {
+      var heu = [title(s), id(s), s.auftraggeber || '', s.bedingungen ? s.bedingungen.join(' ') : '']
+        .concat(zentren(s).map(function (z) { return (z.stadt || '') + ' ' + (z.name || '') + ' ' + (z.plz || ''); }))
+        .join(' ').toLowerCase();
+      if (heu.indexOf(q) < 0) return false;
+    }
+    if (geoFilter.active && matchingLocations(s).length === 0) return false;
+    return true;
+  });
+  return sortByDistance(rows);
+}
+
+function updateResults() {
+  var counter = document.getElementById('counter');
+  var results = document.getElementById('results');
+  if (!counter || !results) return;
+  var rows = filteredStudies();
+  var zentrenZahl = rows.reduce(function (n, s) { return n + matchingLocations(s).length; }, 0);
+  counter.textContent = rows.length + ' Studien · ' + zentrenZahl + ' Standorte';
+  if (view === 'map') renderOverviewMap(rows);
+  else renderList(rows);
+}
+
+function renderList(rows) {
+  destroyMap();
+  var results = document.getElementById('results');
+  if (!rows.length) {
+    results.innerHTML = '<div class="empty-state">Keine passenden Studien im aktuellen Datenstand.</div>';
+    return;
+  }
+  results.innerHTML = rows.map(function (s) {
+    var z = matchingLocations(s);
+    return '<article class="study" data-id="' + esc(id(s)) + '" tabindex="0">'
+      + '<a class="study-link" href="#" data-id="' + esc(id(s)) + '"><b>' + esc(title(s)) + '</b></a>'
+      + '<div class="muted">' + esc(id(s)) + ' · ' + esc(quellenText(s))
+      + (phaseText(s) ? ' · ' + esc(phaseText(s)) : '') + ' · ' + statusBadge(studyStatus(s))
+      + ' · <span class="location-highlight">' + z.length + ' passende Standorte</span></div></article>';
+  }).join('');
+  Array.prototype.forEach.call(results.querySelectorAll('.study'), function (x) {
+    x.onclick = function (e) { e.preventDefault(); detail(x.dataset.id); };
+    x.onkeydown = function (e) { if (e.key === 'Enter' || e.key === ' ') detail(x.dataset.id); };
+  });
+}
+
+/* ---------------- Karte ---------------- */
+
+function destroyMap() { if (map) { map.remove(); map = null; } }
+
+function renderOverviewMap(rows) {
+  destroyMap();
+  var results = document.getElementById('results');
+  results.innerHTML = '<div id="overviewMap" class="overview-map" aria-label="Karte der Studienstandorte"></div>';
+  var holder = document.getElementById('overviewMap');
+  if (typeof L === 'undefined') {
+    holder.insertAdjacentHTML('afterend', '<div class="empty-state">Die Kartenbibliothek konnte nicht geladen werden. Die Liste ist weiterhin verfügbar.</div>');
+    return;
+  }
+  map = L.map('overviewMap');
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap contributors' }).addTo(map);
+
+  var gruppen = new Map(), reihenfolge = [], bounds = [];
+  rows.forEach(function (s) {
+    matchingLocations(s).forEach(function (z) {
+      var la = Number(z.lat), lo = Number(z.lon);
+      var key = [String(z.name || '').toLowerCase(), String(z.plz || ''), String(z.stadt || '').toLowerCase()].join('|');
+      if (!gruppen.has(key)) { gruppen.set(key, { ort: z, lat: la, lon: lo, studien: new Map() }); reihenfolge.push(key); }
+      gruppen.get(key).studien.set(id(s), s);
+    });
+  });
+
+  reihenfolge.forEach(function (key) {
+    var g = gruppen.get(key);
+    var items = Array.from(g.studien.values());
+    var anzahl = items.length;
+    var dist = geoFilter.active ? distanceKm(geoFilter.lat, geoFilter.lon, g.lat, g.lon) : null;
+    var kopf = [g.ort.name || 'Studienzentrum', [g.ort.plz || '', g.ort.stadt || ''].filter(Boolean).join(' '), dist === null ? '' : Math.round(dist) + ' km entfernt'].filter(Boolean);
+    var liste = items.map(function (s) {
+      return '<div class="site-study"><span class="site-study-title">' + esc(title(s)) + '</span>'
+        + '<div class="site-study-meta">' + esc(id(s)) + ' · ' + esc(quellenText(s))
+        + (phaseText(s) ? ' · ' + esc(phaseText(s)) : '') + ' · ' + statusBadge(studyStatus(s)) + '</div>'
+        + '<button type="button" data-study="' + esc(id(s)) + '">Studie anzeigen</button></div>';
+    }).join('');
+    var popup = '<div class="site-popup"><div class="site-popup-head"><strong>' + anzahl + ' ' + (anzahl === 1 ? 'Studie' : 'Studien') + ' an diesem Standort</strong>'
+      + '<div class="map-popup-meta">' + kopf.map(esc).join('<br>') + '</div></div>'
+      + '<div class="site-popup-list">' + liste + '</div></div>';
+    var icon = L.divIcon({ className: 'site-count-icon', html: '<span class="site-count-badge">' + anzahl + '</span>', iconSize: [34, 34], iconAnchor: [17, 17], popupAnchor: [0, -17] });
+    L.marker([g.lat, g.lon], { icon: icon, title: anzahl + ' Studien' }).addTo(map).bindPopup(popup, { maxWidth: 380, minWidth: 280 });
+    bounds.push([g.lat, g.lon]);
+  });
+
+  map.on('popupopen', function (e) {
+    var el = e.popup.getElement();
+    if (!el) return;
+    Array.prototype.forEach.call(el.querySelectorAll('[data-study]'), function (b) {
+      b.onclick = function () { detail(b.dataset.study); };
+    });
+  });
+
+  if (geoFilter.active) {
+    L.circle([geoFilter.lat, geoFilter.lon], { radius: geoFilter.radius * 1000, color: '#a8440d', weight: 2, fillColor: '#f39200', fillOpacity: 0.06, interactive: false }).addTo(map);
+    L.circleMarker([geoFilter.lat, geoFilter.lon], { radius: 6, color: '#a8440d', weight: 2, fillColor: '#fff', fillOpacity: 1, interactive: false }).addTo(map).bindTooltip(esc(geoFilter.label));
+    map.setView([geoFilter.lat, geoFilter.lon], geoFilter.radius <= 50 ? 9 : geoFilter.radius <= 100 ? 8 : geoFilter.radius <= 200 ? 7 : 6);
+  } else if (bounds.length) {
+    map.fitBounds(bounds, { padding: [30, 30], maxZoom: 9 });
+  } else {
+    map.setView([51.2, 10.4], 6);
+  }
+
+  if (!reihenfolge.length) {
+    holder.insertAdjacentHTML('afterend', '<div class="empty-state">Für die aktuelle Auswahl sind keine Standorte auf der Karte verfügbar.</div>');
+  }
+}
+
+/* ---------------- Umkreisfilter ---------------- */
+
+function ortZuKoordinaten(eingabe, plzTabelle) {
+  var t = String(eingabe || '').trim();
+  var m = /(?:^|\D)(\d{5})(?:\D|$)/.exec(t);
+  if (m && plzTabelle[m[1]]) {
+    var p = plzTabelle[m[1]];
+    return { lat: p[0], lon: p[1], label: m[1], methode: 'PLZ' };
+  }
+  // Ortsname in der Zentrenliste suchen
+  var name = t.replace(/\d{5}/g, '').replace(/[,\-;]+/g, ' ').replace(/\s+/g, ' ').trim().toLowerCase();
+  if (!name) return null;
+  var zentrenListe = (DATEN.zentren && DATEN.zentren.zentren) || [];
+  var treffer = zentrenListe.filter(function (z) { return String(z.stadt || '').toLowerCase() === name; });
+  if (!treffer.length) treffer = zentrenListe.filter(function (z) { return String(z.stadt || '').toLowerCase().indexOf(name) === 0; });
+  if (!treffer.length) return null;
+  var lat = treffer.reduce(function (n, z) { return n + Number(z.lat); }, 0) / treffer.length;
+  var lon = treffer.reduce(function (n, z) { return n + Number(z.lon); }, 0) / treffer.length;
+  return { lat: lat, lon: lon, label: t, methode: 'Ort' };
+}
+
+function applyGeoFilter() {
+  var place = document.getElementById('place').value.trim();
+  var radius = Number(document.getElementById('radius').value);
+  var statusEl = document.getElementById('geoStatus');
+  if (!place) { statusEl.textContent = 'Bitte geben Sie einen Ort oder eine PLZ ein.'; return; }
+  var hit = ortZuKoordinaten(place, DATEN.plz || {});
+  if (!hit) { statusEl.textContent = 'PLZ oder Ort wurde nicht gefunden. Bitte Eingabe prüfen.'; return; }
+  geoFilter = { active: true, lat: hit.lat, lon: hit.lon, radius: radius, label: hit.label };
+  document.getElementById('geoReset').disabled = false;
+  statusEl.textContent = 'Aktiv: ' + hit.label + ' · ' + radius + ' km Umkreis';
+  updateResults();
+}
+
+function resetGeoFilter() {
+  geoFilter = { active: false, lat: null, lon: null, radius: Number(document.getElementById('radius').value || 200), label: '' };
+  document.getElementById('place').value = '';
+  document.getElementById('geoReset').disabled = true;
+  document.getElementById('geoStatus').textContent = '';
+  updateResults();
+}
+
+/* ---------------- Auswahl und Detailansicht ---------------- */
+
+function select(i, updateHash) {
+  page = 'studien'; current = i;
+  geoFilter = { active: false, lat: null, lon: null, radius: 200, label: '' };
+  if (updateHash !== false) history.pushState(null, '', '#studien-' + slugOf(DATEN.studien.entitaeten[i].label));
+  sidebar();
+  render();
+  window.scrollTo({ top: 0 });
+}
+
+function detail(kennung) {
+  destroyMap();
+  var s = DATEN.studien.studien[kennung] || DATEN.studien.studien[String(kennung).toUpperCase()];
+  if (!s) { app.innerHTML = '<button class="back" id="back">← Zur Studienübersicht</button><p>Studie nicht gefunden.</p>'; document.getElementById('back').onclick = render; return; }
+  var z = zentren(s);
+  var block = '<button class="back" id="back">← Zur Studienübersicht</button><div class="details">';
+  block += '<h2>' + esc(title(s)) + '</h2>';
+  block += '<p><span class="tag">' + esc(id(s)) + '</span>' + statusBadge(studyStatus(s));
+  if (phaseText(s)) block += '<span class="tag">' + esc(phaseText(s)) + '</span>';
+  if (s.nct && s.euct) block += '<span class="tag">EUCT ' + esc(s.euct) + '</span>';
+  block += '<span class="tag">' + esc(quellenText(s)) + '</span></p>';
+  if (s.zwischensumme) block += '<h3>Brief Summary</h3><p>' + esc(s.zwischensumme) + '</p>';
+  if (s.offiziellerTitel && s.offiziellerTitel !== title(s)) block += '<h3>Official Title</h3><p>' + esc(s.offiziellerTitel) + '</p>';
+  if (s.bedingungen && s.bedingungen.length) block += '<h3>Conditions</h3><p>' + s.bedingungen.map(function (c) { return '<span class="tag">' + esc(c) + '</span>'; }).join('') + '</p>';
+  if (s.schlagworte && s.schlagworte.length) block += '<h3>Keywords</h3><p>' + s.schlagworte.slice(0, 12).map(function (k) { return '<span class="tag">' + esc(k) + '</span>'; }).join('') + '</p>';
+  if (s.beschreibung) block += '<h3>Main objective</h3><p>' + esc(s.beschreibung) + '</p>';
+  if (s.auftraggeber) block += '<h3>Sponsor</h3><p>' + esc(s.auftraggeber) + '</p>';
+  block += '<h3>Originalstudie</h3><p><a href="' + esc(s.link) + '" target="_blank" rel="noopener">' + esc(s.link) + ' ↗</a></p>';
+  block += '<h3>Studienzentren in Deutschland (' + z.length + ')</h3>';
+  if (z.length) {
+    block += '<div class="loc-table-wrap"><table class="loc-table"><thead><tr><th>Ort</th><th>PLZ</th><th>Zentrum</th><th>Abteilung</th><th>Kontakt</th><th>E-Mail</th><th>Telefon</th></tr></thead><tbody>'
+      + z.map(function (l) {
+        return '<tr><td>' + esc(l.stadt || '') + '</td><td>' + esc(l.plz || '') + '</td><td>' + esc(l.name || '') + '</td><td>' + esc(l.abteilung || '') + '</td><td>' + esc(l.kontakt || '') + '</td><td>' + esc(l.email || '') + '</td><td>' + esc(l.telefon || '') + '</td></tr>';
+      }).join('')
+      + '</tbody></table></div>';
+  } else {
+    block += '<div class="notice">Für diese Studie sind im Datenstand keine deutschen Zentren enthalten. Angaben finden Sie beim Studienzentrum oder im Registereintrag.</div>';
+  }
+  block += '<p class="muted">Datenstand: ' + (DATEN.stand ? new Date(DATEN.stand).toLocaleDateString('de-DE') : 'unbekannt') + '. Registerangaben vor klinischer Verwendung beim Studienzentrum bestätigen.</p>';
+  block += '</div>';
+  app.innerHTML = block;
+  document.getElementById('back').onclick = render;
+  window.scrollTo({ top: 0 });
+}
+
+/* ---------------- Start ---------------- */
+
+async function ladeDaten() {
+  var fehler = [];
+  try {
+    var r1 = await fetch('data/studies.json');
+    if (!r1.ok) throw Error('studies.json HTTP ' + r1.status);
+    DATEN.studien = await r1.json();
+    DATEN.stand = DATEN.studien.stand || '';
+  } catch (e) { fehler.push('Studiendaten: ' + e.message); }
+  try {
+    var r2 = await fetch('data/sites.json');
+    if (!r2.ok) throw Error('sites.json HTTP ' + r2.status);
+    DATEN.zentren = await r2.json();
+  } catch (e) { fehler.push('Standortdaten: ' + e.message); }
+  try {
+    var r3 = await fetch('data/plz-de.json');
+    if (!r3.ok) throw Error('plz-de.json HTTP ' + r3.status);
+    var pd = await r3.json();
+    DATEN.plz = pd.koordinaten || {};
+  } catch (e) { fehler.push('Postleitzahlen: ' + e.message); }
+  return fehler;
+}
+
+(async function start() {
+  var fehler = await ladeDaten();
+  if (fehler.length || !DATEN.studien) {
+    sidebar();
+    app.innerHTML = '<h2>Daten konnten nicht geladen werden</h2>'
+      + '<div class="notice"><b>Hinweis:</b> Der Datenstand ist noch nicht verfügbar. Bitte wenden Sie sich an den Betreiber.<br><br>'
+      + fehler.map(esc).join('<br>') + '</div>';
+    return;
+  }
+  sidebar();
+  handleRoute();
+})();
+
+document.getElementById('homeLink').onclick = function (e) { e.preventDefault(); navigateHash('#start'); };
+Array.prototype.forEach.call(document.querySelectorAll('[data-page]'), function (b) {
+  b.onclick = function () { navigateHash(b.dataset.page === 'privacy' ? '#datenschutz' : '#impressum'); };
+});
+window.addEventListener('popstate', handleRoute);
 </script></body></html>
