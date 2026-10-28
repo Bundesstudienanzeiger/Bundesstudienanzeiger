@@ -21,7 +21,7 @@ jobs:
       - name: Node einrichten
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
 
       - name: Daten importieren
         run: node scripts/import.mjs
@@ -33,7 +33,7 @@ jobs:
         run: |
           git config user.name "Bundesstudienanzeiger"
           git config user.email "kontakt@bundesstudienanzeiger.de"
-          git add data/studies.json data/sites.json
+          git add public/data/studies.json public/data/sites.json
           if git diff --staged --quiet; then
             echo "Keine Änderungen am Datenstand."
           else
