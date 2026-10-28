@@ -179,8 +179,23 @@ function render() {
 
 function studienDerEntitaet() {
   var key = DATEN.studien.entitaeten[current].key;
+  var alle = DATEN.studien.studien || {};
+  var raus = [];
+  // 1. Weg über die Zuordnungsliste
   var ids = (DATEN.studien.nachEntitaet && DATEN.studien.nachEntitaet[key]) || [];
-  return ids.map(function (k) { return DATEN.studien.studien[k]; }).filter(Boolean);
+  ids.forEach(function (k) {
+    var s = alle[k];
+    if (s) raus.push(s);
+  });
+  // 2. Ergänzend direkt über die Studienobjekte suchen
+  Object.keys(alle).forEach(function (k) {
+    var s = alle[k];
+    if (!s || !Array.isArray(s.entitaeten)) return;
+    if (s.entitaeten.indexOf(key) < 0) return;
+    if (raus.indexOf(s) >= 0) return;
+    raus.push(s);
+  });
+  return raus;
 }
 
 function matchingLocations(s) {
