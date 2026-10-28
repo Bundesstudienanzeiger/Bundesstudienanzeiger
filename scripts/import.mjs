@@ -353,6 +353,7 @@ async function main() {
       for (const r of rohdaten) {
         const s = nctStudie(r, plzTabelle);
         if (!s) continue;
+        if (!s.entitaeten.length) s.entitaeten = [entitaet.key];
         if (!s.entitaeten.includes(entitaet.key)) continue;
         if (alleStudien.has('NCT:' + s.nct)) continue;
         alleStudien.set('NCT:' + s.nct, s);
@@ -382,6 +383,7 @@ async function main() {
             const roh = await r.json();
             if (!roh || !roh.ctNumber) { ohneDetails++; continue; }
             const s = ctisStudie(z, roh, plzTabelle);
+            if (!s.entitaeten.length) s.entitaeten = [entitaet.key];
             if (!s.entitaeten.includes(entitaet.key)) continue;
             // Dublettenabgleich: gleiche NCT-Nummer bereits vorhanden?
             if (s.nct && nachNct.has(s.nct.toUpperCase())) {
@@ -412,7 +414,7 @@ async function main() {
   for (const e of ENTITAETEN) nachEntitaet[e.key] = [];
   for (const s of alleStudien.values()) {
     for (const key of s.entitaeten) {
-      if (nachEntitaet[key]) nachEntitaet[key].push(s.nct || s.euct);
+      if (nachEntitaet[key]) nachEntitaet[key].push(s.nct || s.euct || '');
     }
   }
 
@@ -440,6 +442,27 @@ async function main() {
   };
 
   await writeFile(path.join(DATEN, 'studies.json'), JSON.stringify(studies), 'utf8');
+
+  // Kleine Prüfübersicht für den schnellen Blick
+  const uebersicht = {
+    stand: studies.stand,
+    anzahl: alleStudien.size,
+    zentren: alleZentren.length,
+    fehler: fehler.length,
+    proEntitaet: ENTITAETEN.map((e) => ({ key: e.key, label: e.label, anzahl: nachEntitaet[e.key].length })),
+    ersteKennungen: {},
+  };
+  const beispiel = Object.keys(studies.studien).slice(0, 3);
+  for (const k of beispiel) {
+    const s = studies.studien[k];
+    uebersicht.ersteKennungen[k] = {
+      titel: (s.titel || '').slice(0, 80),
+      entitaeten: s.entitaeten,
+      quellen: s.quellen,
+      zentren: (s.zentren || []).length,
+    };
+  }
+  await writeFile(path.join(DATEN, 'uebersicht.json'), JSON.stringify(uebersicht, null, 2), 'utf8');
   await writeFile(path.join(DATEN, 'sites.json'), JSON.stringify(sites), 'utf8');
 
   console.log('');
