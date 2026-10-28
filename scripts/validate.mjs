@@ -8,7 +8,7 @@ import { readFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
 
-const DATEN = path.join(process.cwd(), 'data');
+const DATEN = path.join(process.cwd(), 'public', 'data');
 const fehler = [];
 const warnungen = [];
 
@@ -32,9 +32,9 @@ async function main() {
   const plz = await lies('plz-de.json');
 
   /* ---------- Grundstruktur ---------- */
-  pruefe(studies !== null, 'data/studies.json fehlt');
-  pruefe(sites !== null, 'data/sites.json fehlt');
-  pruefe(plz !== null, 'data/plz-de.json fehlt');
+  pruefe(studies !== null, 'public/data/studies.json fehlt');
+  pruefe(sites !== null, 'public/data/sites.json fehlt');
+  pruefe(plz !== null, 'public/data/plz-de.json fehlt');
   if (!studies || !sites || !plz) return abschluss();
 
   pruefe(studies.stand, 'studies.json enthält keinen Datenstand');
