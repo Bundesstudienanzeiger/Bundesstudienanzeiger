@@ -1,0 +1,42 @@
+name: Studiendaten aktualisieren
+
+on:
+  schedule:
+    # Täglich um 03:20 UTC (04:20 beziehungsweise 05:20 Uhr deutscher Zeit)
+    - cron: '20 3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  aktualisieren:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+
+    steps:
+      - name: Repository auslesen
+        uses: actions/checkout@v4
+
+      - name: Node einrichten
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Daten importieren
+        run: node scripts/import.mjs
+
+      - name: Daten prüfen
+        run: node scripts/validate.mjs
+
+      - name: Änderungen übernehmen
+        run: |
+          git config user.name "Bundesstudienanzeiger"
+          git config user.email "kontakt@bundesstudienanzeiger.de"
+          git add data/studies.json data/sites.json
+          if git diff --staged --quiet; then
+            echo "Keine Änderungen am Datenstand."
+          else
+            git commit -m "Datenstand aktualisiert ($(date -u '+%Y-%m-%d %H:%M UTC'))"
+            git push
+          fi
