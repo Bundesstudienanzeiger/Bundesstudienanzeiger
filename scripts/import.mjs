@@ -355,8 +355,8 @@ async function main() {
         if (!s) continue;
         if (!s.entitaeten.length) s.entitaeten = [entitaet.key];
         if (!s.entitaeten.includes(entitaet.key)) continue;
-        if (alleStudien.has('NCT:' + s.nct)) continue;
-        alleStudien.set('NCT:' + s.nct, s);
+        if (alleStudien.has(s.nct)) continue;
+        alleStudien.set(s.nct, s);
         nachNct.set(s.nct.toUpperCase(), s);
         uebernommen++;
       }
@@ -376,7 +376,7 @@ async function main() {
         for (const z of zeilen) {
           const nummer = text(z.ctNumber);
           if (!nummer) continue;
-          if (alleStudien.has('CTIS:' + nummer)) continue;
+          if (alleStudien.has(nummer)) continue;
           try {
             const r = await fetch('https://euclinicaltrials.eu/ctis-public-api/retrieve/' + encodeURIComponent(nummer), { headers: { Accept: 'application/json' } });
             if (!r.ok) { ohneDetails++; continue; }
@@ -392,7 +392,7 @@ async function main() {
               if (!vorhandene.quellen.includes('CTIS')) vorhandene.quellen.push('CTIS');
               continue;
             }
-            alleStudien.set('CTIS:' + nummer, s);
+            alleStudien.set(nummer, s);
             if (s.nct) nachNct.set(s.nct.toUpperCase(), s);
             uebernommen++;
           } catch (e) {
@@ -422,7 +422,7 @@ async function main() {
   for (const s of alleStudien.values()) {
     for (const z of s.zentren) {
       if (z.lat === null) continue;
-      alleZentren.push({ name: z.name, stadt: z.stadt, plz: z.plz, lat: z.lat, lon: z.lon, studie: s.nct || s.euct });
+      alleZentren.push({ name: z.name, stadt: z.stadt, plz: z.plz, lat: z.lat, lon: z.lon, studie: s.nct || s.euct || '' });
     }
   }
 
