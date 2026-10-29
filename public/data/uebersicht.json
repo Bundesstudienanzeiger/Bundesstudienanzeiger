@@ -1,0 +1,141 @@
+{
+  "stand": "2026-10-29T04:05:48.067Z",
+  "anzahl": 711,
+  "zentren": 3331,
+  "fehler": 0,
+  "proEntitaet": [
+    {
+      "key": "mammakarzinom",
+      "label": "Mammakarzinom",
+      "anzahl": 98
+    },
+    {
+      "key": "prostatakarzinom",
+      "label": "Prostatakarzinom",
+      "anzahl": 62
+    },
+    {
+      "key": "lungenkarzinom",
+      "label": "Lungenkarzinom",
+      "anzahl": 161
+    },
+    {
+      "key": "kolorektales-karzinom",
+      "label": "Kolorektales Karzinom",
+      "anzahl": 64
+    },
+    {
+      "key": "hautmelanom",
+      "label": "Hautmelanom",
+      "anzahl": 35
+    },
+    {
+      "key": "harnblasenkarzinom",
+      "label": "Harnblasenkarzinom",
+      "anzahl": 20
+    },
+    {
+      "key": "nierenzellkarzinom",
+      "label": "Nierenzellkarzinom",
+      "anzahl": 10
+    },
+    {
+      "key": "pankreaskarzinom",
+      "label": "Pankreaskarzinom",
+      "anzahl": 22
+    },
+    {
+      "key": "magenkarzinom",
+      "label": "Magenkarzinom",
+      "anzahl": 26
+    },
+    {
+      "key": "leberkarzinom",
+      "label": "Leberkarzinom",
+      "anzahl": 14
+    },
+    {
+      "key": "endometriumkarzinom",
+      "label": "Endometriumkarzinom",
+      "anzahl": 22
+    },
+    {
+      "key": "zervixkarzinom",
+      "label": "Zervixkarzinom",
+      "anzahl": 8
+    },
+    {
+      "key": "ovarialkarzinom",
+      "label": "Ovarialkarzinom",
+      "anzahl": 33
+    },
+    {
+      "key": "schilddruesenkarzinom",
+      "label": "Schilddrüsenkarzinom",
+      "anzahl": 1
+    },
+    {
+      "key": "kopf-hals-karzinom",
+      "label": "Kopf-Hals-Karzinom",
+      "anzahl": 27
+    },
+    {
+      "key": "oesophaguskarzinom",
+      "label": "Ösophaguskarzinom",
+      "anzahl": 29
+    },
+    {
+      "key": "non-hodgkin-lymphom",
+      "label": "Non-Hodgkin-Lymphom",
+      "anzahl": 41
+    },
+    {
+      "key": "leukaemien",
+      "label": "Leukämien",
+      "anzahl": 101
+    },
+    {
+      "key": "multiples-myelom",
+      "label": "Multiples Myelom",
+      "anzahl": 54
+    },
+    {
+      "key": "hirntumoren",
+      "label": "Hirntumoren",
+      "anzahl": 11
+    }
+  ],
+  "ersteKennungen": {
+    "NCT:NCT07195227": {
+      "titel": "Efficacy and Safety of Camizestrant Plus Ribociclib in Patients With Breast Canc",
+      "entitaeten": [
+        "mammakarzinom"
+      ],
+      "quellen": [
+        "CTGOV"
+      ],
+      "zentren": 1
+    },
+    "NCT:NCT06312176": {
+      "titel": "A Study of Sacituzumab Tirumotecan (MK-2870) as a Single Agent and in Combinatio",
+      "entitaeten": [
+        "mammakarzinom"
+      ],
+      "quellen": [
+        "CTGOV"
+      ],
+      "zentren": 9
+    },
+    "NCT:NCT06382948": {
+      "titel": "Elacestrant + Everolimus in Patients ER+/HER2-, ESR1mut, Advanced Breast Cancer ",
+      "entitaeten": [
+        "mammakarzinom"
+      ],
+      "quellen": [
+        "CTGOV",
+        "CTIS"
+      ],
+      "zentren": 7
+    }
+  }
+}
