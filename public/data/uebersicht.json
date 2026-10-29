@@ -1,7 +1,7 @@
 {
-  "stand": "2026-10-29T04:05:48.067Z",
+  "stand": "2026-10-29T20:35:08.156Z",
   "anzahl": 711,
-  "zentren": 3331,
+  "zentren": 3332,
   "fehler": 0,
   "proEntitaet": [
     {
@@ -106,8 +106,8 @@
     }
   ],
   "ersteKennungen": {
-    "NCT:NCT07195227": {
-      "titel": "Efficacy and Safety of Camizestrant Plus Ribociclib in Patients With Breast Canc",
+    "NCT06643585": {
+      "titel": "A Randomized Secondary Adjuvant Treatment Intervention Study Comparing Trastuzum",
       "entitaeten": [
         "mammakarzinom"
       ],
@@ -116,18 +116,8 @@
       ],
       "zentren": 1
     },
-    "NCT:NCT06312176": {
-      "titel": "A Study of Sacituzumab Tirumotecan (MK-2870) as a Single Agent and in Combinatio",
-      "entitaeten": [
-        "mammakarzinom"
-      ],
-      "quellen": [
-        "CTGOV"
-      ],
-      "zentren": 9
-    },
-    "NCT:NCT06382948": {
-      "titel": "Elacestrant + Everolimus in Patients ER+/HER2-, ESR1mut, Advanced Breast Cancer ",
+    "NCT05512364": {
+      "titel": "Elacestrant for Treating ER+/HER2- Breast Cancer Patients With ctDNA Relapse (TR",
       "entitaeten": [
         "mammakarzinom"
       ],
@@ -135,7 +125,17 @@
         "CTGOV",
         "CTIS"
       ],
-      "zentren": 7
+      "zentren": 21
+    },
+    "NCT07287098": {
+      "titel": "A Study of Imlunestrant (LY3484356) in Premenopausal Women With Estrogen Recepto",
+      "entitaeten": [
+        "mammakarzinom"
+      ],
+      "quellen": [
+        "CTGOV"
+      ],
+      "zentren": 30
     }
   }
 }
