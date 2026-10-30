@@ -1,6 +1,6 @@
 {
-  "stand": "2026-10-29T20:35:08.156Z",
-  "anzahl": 711,
+  "stand": "2026-10-30T04:06:28.851Z",
+  "anzahl": 704,
   "zentren": 3332,
   "fehler": 0,
   "proEntitaet": [
@@ -17,7 +17,7 @@
     {
       "key": "lungenkarzinom",
       "label": "Lungenkarzinom",
-      "anzahl": 161
+      "anzahl": 155
     },
     {
       "key": "kolorektales-karzinom",
@@ -27,7 +27,7 @@
     {
       "key": "hautmelanom",
       "label": "Hautmelanom",
-      "anzahl": 35
+      "anzahl": 34
     },
     {
       "key": "harnblasenkarzinom",
