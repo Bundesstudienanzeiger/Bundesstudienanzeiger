@@ -40,7 +40,12 @@ function phaseText(s) { return s.phase || 'Phase nicht angegeben'; }
 function studyStatus(s) { return s.statusDeutsch || s.status || 'Status nicht angegeben'; }
 function quellenText(s) { return (s.quellen || []).map(function (q) { return q === 'CTIS' ? 'CTIS' : 'ClinicalTrials.gov'; }).join(' + '); }
 function zentren(s) { return Array.isArray(s.zentren) ? s.zentren : []; }
-function mitKoordinaten(s) { return zentren(s).filter(function (z) { return Number.isFinite(Number(z.lat)) && Number.isFinite(Number(z.lon)); }); }
+function inDeutschland(lat, lon) {
+  return Number.isFinite(lat) && Number.isFinite(lon) && lat >= 47 && lat <= 56 && lon >= 5 && lon <= 16;
+}
+function mitKoordinaten(s) {
+  return zentren(s).filter(function (z) { return inDeutschland(Number(z.lat), Number(z.lon)); });
+}
 
 function statusClass(v) {
   var x = String(v || '').toUpperCase();
@@ -393,9 +398,16 @@ function select(i, updateHash) {
   window.scrollTo({ top: 0 });
 }
 
+function findeStudie(kennung) {
+  var alle = DATEN.studien.studien || {};
+  var k = String(kennung || '');
+  var g = k.toUpperCase();
+  return alle[k] || alle[g] || alle['NCT:' + g] || alle['CTIS:' + k] || null;
+}
+
 function detail(kennung) {
   destroyMap();
-  var s = DATEN.studien.studien[kennung] || DATEN.studien.studien[String(kennung).toUpperCase()];
+  var s = findeStudie(kennung);
   if (!s) { app.innerHTML = '<button class="back" id="back">← Zur Studienübersicht</button><p>Studie nicht gefunden.</p>'; document.getElementById('back').onclick = render; return; }
   var z = zentren(s);
   var block = '<button class="back" id="back">← Zur Studienübersicht</button><div class="details">';
