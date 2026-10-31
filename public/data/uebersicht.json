@@ -1,7 +1,7 @@
 {
-  "stand": "2026-10-30T04:06:28.851Z",
-  "anzahl": 704,
-  "zentren": 3332,
+  "stand": "2026-10-31T04:01:49.205Z",
+  "anzahl": 711,
+  "zentren": 3335,
   "fehler": 0,
   "proEntitaet": [
     {
@@ -17,7 +17,7 @@
     {
       "key": "lungenkarzinom",
       "label": "Lungenkarzinom",
-      "anzahl": 155
+      "anzahl": 162
     },
     {
       "key": "kolorektales-karzinom",
@@ -106,6 +106,16 @@
     }
   ],
   "ersteKennungen": {
+    "NCT07062965": {
+      "titel": "A Study to Learn About the Study Medicine Called PF-07248144 in Combination With",
+      "entitaeten": [
+        "mammakarzinom"
+      ],
+      "quellen": [
+        "CTGOV"
+      ],
+      "zentren": 10
+    },
     "NCT06643585": {
       "titel": "A Randomized Secondary Adjuvant Treatment Intervention Study Comparing Trastuzum",
       "entitaeten": [
@@ -116,26 +126,20 @@
       ],
       "zentren": 1
     },
-    "NCT05512364": {
-      "titel": "Elacestrant for Treating ER+/HER2- Breast Cancer Patients With ctDNA Relapse (TR",
+    "NCT05503797": {
+      "titel": "A Study to Assess the Efficacy and Safety of FORE8394 in Participants With Cance",
       "entitaeten": [
-        "mammakarzinom"
-      ],
-      "quellen": [
-        "CTGOV",
-        "CTIS"
-      ],
-      "zentren": 21
-    },
-    "NCT07287098": {
-      "titel": "A Study of Imlunestrant (LY3484356) in Premenopausal Women With Estrogen Recepto",
-      "entitaeten": [
-        "mammakarzinom"
+        "mammakarzinom",
+        "harnblasenkarzinom",
+        "leberkarzinom",
+        "ovarialkarzinom",
+        "schilddruesenkarzinom",
+        "hirntumoren"
       ],
       "quellen": [
         "CTGOV"
       ],
-      "zentren": 30
+      "zentren": 3
     }
   }
 }
