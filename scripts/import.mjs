@@ -127,11 +127,24 @@ function inDeutschland(lat, lon) {
   return Number.isFinite(lat) && Number.isFinite(lon) && lat >= 47 && lat <= 56 && lon >= 5 && lon <= 16;
 }
 
+/** Merkt sich pro Stadt einen bereits ermittelten Punkt. */
+const ortsPunkt = new Map();
+
 function verorte(zentrum, plzTabelle) {
   const plz = plzNormieren(zentrum.plz) || plzNormieren(zentrum.adresse);
   if (plz && plzTabelle[plz]) {
     const [lat, lon] = plzTabelle[plz];
-    if (inDeutschland(lat, lon)) return { lat, lon, genauigkeit: 'PLZ' };
+    if (inDeutschland(lat, lon)) {
+      const stadt = String(zentrum.stadt || '').trim().toLowerCase();
+      if (stadt && !ortsPunkt.has(stadt)) ortsPunkt.set(stadt, { lat, lon });
+      return { lat, lon, genauigkeit: 'PLZ' };
+    }
+  }
+  // Rückfall: derselbe Ort wurde bei einem anderen Zentrum schon verortet
+  const stadt = String(zentrum.stadt || '').trim().toLowerCase();
+  if (stadt && ortsPunkt.has(stadt)) {
+    const p = ortsPunkt.get(stadt);
+    return { lat: p.lat, lon: p.lon, genauigkeit: 'Ort' };
   }
   return { lat: null, lon: null, genauigkeit: 'unbekannt' };
 }
@@ -193,7 +206,8 @@ function nctStudie(rohdaten, plzTabelle) {
     // Zuerst die PLZ-Tabelle, sonst die Registerkoordinate – aber nur innerhalb Deutschlands
     const pos = verorte(punkt, plzTabelle);
     if (pos.lat !== null) return { ...punkt, lat: pos.lat, lon: pos.lon, genauigkeit: pos.genauigkeit };
-    if (inDeutschland(glat, glon)) return { ...punkt, lat: glat, lon: glon, genauigkeit: 'Register' };
+    if (glat !== 0 && glon !== 0 && inDeutschland(glat, glon)) return { ...punkt, lat: glat, lon: glon, genauigkeit: 'Register' };
+    if (glat !== 0 && glon !== 0 && inDeutschland(glon, glat)) return { ...punkt, lat: glon, lon: glat, genauigkeit: 'Register' };
     return { ...punkt, lat: null, lon: null, genauigkeit: 'unbekannt' };
   });
 
@@ -340,6 +354,7 @@ function ctisStudie(rohzeile, rohdaten, plzTabelle) {
 
   const zentren = ctisZentren(rohdaten).map((z) => {
     const pos = verorte(z, plzTabelle);
+    if (pos.lat === null) return { ...z, lat: null, lon: null, genauigkeit: 'unbekannt' };
     return { ...z, lat: pos.lat, lon: pos.lon, genauigkeit: pos.genauigkeit };
   });
 
@@ -463,7 +478,7 @@ async function main() {
   const alleZentren = [];
   for (const s of alleStudien.values()) {
     for (const z of s.zentren) {
-      if (z.lat === null) continue;
+      if (z.lat === null || z.lat === 0) continue;
       alleZentren.push({ name: z.name, stadt: z.stadt, plz: z.plz, lat: z.lat, lon: z.lon, studie: s.nct || s.euct || '' });
     }
   }
