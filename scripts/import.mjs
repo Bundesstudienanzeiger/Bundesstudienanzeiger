@@ -96,6 +96,21 @@ function plzAusAdresse(adresse) {
   return m ? m[1] : '';
 }
 
+/** Postleitzahl aus beliebigen Schreibweisen auf fünf Ziffern bringen. */
+function plzNormieren(wert) {
+  const t = String(wert || '').trim();
+  if (!t) return '';
+  let m = /\b(\d{5})\b/.exec(t);
+  if (m) return m[1];
+  m = /(?:^|\D)(\d{5})(?:\D|$)/.exec(t);
+  if (m) return m[1];
+  m = /(?:^|\D)(\d{4})(?:\D|$)/.exec(t);
+  if (m) return '0' + m[1];
+  m = /(?:^|\D)(\d{3})(?:\D|$)/.exec(t);
+  if (m) return '00' + m[1];
+  return '';
+}
+
 /* ------------------------------------------------------------------ */
 /* PLZ-Verzeichnis                                                     */
 /* ------------------------------------------------------------------ */
@@ -107,12 +122,16 @@ async function ladePlz() {
   return inhalt.koordinaten || {};
 }
 
+/** Liegt der Punkt in Deutschland? */
+function inDeutschland(lat, lon) {
+  return Number.isFinite(lat) && Number.isFinite(lon) && lat >= 47 && lat <= 56 && lon >= 5 && lon <= 16;
+}
+
 function verorte(zentrum, plzTabelle) {
-  // 1. Postleitzahl aus dem Datensatz
-  const plz = zentrum.plz || plzAusAdresse(zentrum.adresse);
+  const plz = plzNormieren(zentrum.plz) || plzNormieren(zentrum.adresse);
   if (plz && plzTabelle[plz]) {
     const [lat, lon] = plzTabelle[plz];
-    return { lat, lon, genauigkeit: 'PLZ' };
+    if (inDeutschland(lat, lon)) return { lat, lon, genauigkeit: 'PLZ' };
   }
   return { lat: null, lon: null, genauigkeit: 'unbekannt' };
 }
@@ -167,9 +186,15 @@ function nctStudie(rohdaten, plzTabelle) {
   const titel = (p.identificationModule && p.identificationModule.briefTitle) || 'Ohne Titel';
 
   const zentren = orte.map((o) => {
+    const geo = o.geoPoint || {};
+    const glat = Number(geo.lat);
+    const glon = Number(geo.lon);
     const punkt = { plz: String(o.zip || ''), stadt: o.city || '', adresse: [o.facility, o.city, o.zip, o.country].filter(Boolean).join(', '), name: o.facility || 'Studienzentrum', kontakt: '', email: '', telefon: '', abteilung: '', status: o.status || '' };
+    // Zuerst die PLZ-Tabelle, sonst die Registerkoordinate – aber nur innerhalb Deutschlands
     const pos = verorte(punkt, plzTabelle);
-    return { ...punkt, lat: pos.lat, lon: pos.lon, genauigkeit: pos.genauigkeit };
+    if (pos.lat !== null) return { ...punkt, lat: pos.lat, lon: pos.lon, genauigkeit: pos.genauigkeit };
+    if (inDeutschland(glat, glon)) return { ...punkt, lat: glat, lon: glon, genauigkeit: 'Register' };
+    return { ...punkt, lat: null, lon: null, genauigkeit: 'unbekannt' };
   });
 
   return {
@@ -229,19 +254,36 @@ async function ladeCtis(entitaet) {
   return ergebnisse;
 }
 
-function ctisDeutschlandBlock(raw) {
-  const p1 = (raw.authorizedApplication && raw.authorizedApplication.authorizedPartI) || {};
-  const listen = [
-    p1.trialInformation && p1.trialInformation.countriesRecruitment,
-    p1.countriesRecruitment,
-    p1.countries,
-    raw.countriesRecruitment,
-  ].filter(Array.isArray);
-  for (const liste of listen) {
-    const treffer = liste.find((e) => /germany|deutschland/i.test(text(e && (e.mscName || e.countryName || e.name))));
-    if (treffer) return treffer;
+/** Sucht rekursiv alle Knoten, die wie ein Länderblock aussehen. */
+function sammleLänderblöcke(knoten, tiefe = 0, raus = []) {
+  if (!knoten || typeof knoten !== 'object' || tiefe > 12) return raus;
+  if (Array.isArray(knoten)) {
+    for (const e of knoten) sammleLänderblöcke(e, tiefe + 1, raus);
+    return raus;
   }
-  return null;
+  const name = text(knoten.mscName || knoten.countryName);
+  if (name && Array.isArray(knoten.trialSites)) raus.push(knoten);
+  for (const wert of Object.values(knoten)) {
+    if (wert && typeof wert === 'object') sammleLänderblöcke(wert, tiefe + 1, raus);
+  }
+  return raus;
+}
+
+function ctisDeutschlandBlock(raw) {
+  const blöcke = sammleLänderblöcke(raw);
+  return blöcke.find((b) => /germany|deutschland/i.test(text(b.mscName || b.countryName))) || null;
+}
+
+/** Status für Deutschland aus den Anwendungsinformationen. */
+function ctisDeutschlandStatus(raw) {
+  const blöcke = sammleLänderblöcke(raw);
+  const de = blöcke.find((b) => /germany|deutschland/i.test(text(b.mscName || b.countryName)));
+  if (!de) return '';
+  const status = text(de.trialStatus) || text(de.currentStatus) || text(de.recruitmentStatus) || text(de.status);
+  if (status) return status;
+  const verlauf = de.ctStatuses || de.statusHistory || [];
+  if (Array.isArray(verlauf) && verlauf.length) return text(verlauf[verlauf.length - 1].trialStatus);
+  return '';
 }
 
 function ctisZentren(raw) {
@@ -292,7 +334,7 @@ function ctisStudie(rohzeile, rohdaten, plzTabelle) {
   const det = p1.trialDetails || rohdaten.trialDetails || {};
   const ids = det.clinicalTrialIdentifiers || {};
   const de = ctisDeutschlandBlock(rohdaten);
-  const statusDeutsch = de ? (text(de.currentStatus) || text(de.status) || text(de.recruitmentStatus)) : '';
+  const statusDeutsch = ctisDeutschlandStatus(rohdaten);
   const nctRoh = JSON.stringify(ids.secondaryIdentifyingNumbers || {});
   const nctTreffer = /NCT\d+/i.exec(nctRoh);
 
