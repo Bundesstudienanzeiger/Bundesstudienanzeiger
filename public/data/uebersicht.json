@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-01T04:08:53.324Z",
-  "anzahl": 708,
+  "stand": "2026-11-02T04:17:30.617Z",
+  "anzahl": 711,
   "zentren": 4358,
   "fehler": 0,
   "proEntitaet": [
@@ -27,7 +27,7 @@
     {
       "key": "hautmelanom",
       "label": "Hautmelanom",
-      "anzahl": 31
+      "anzahl": 34
     },
     {
       "key": "harnblasenkarzinom",
