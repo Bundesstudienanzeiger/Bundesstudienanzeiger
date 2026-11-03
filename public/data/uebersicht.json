@@ -1,13 +1,13 @@
 {
-  "stand": "2026-11-02T04:17:30.617Z",
-  "anzahl": 711,
+  "stand": "2026-11-03T04:11:58.600Z",
+  "anzahl": 709,
   "zentren": 4358,
   "fehler": 0,
   "proEntitaet": [
     {
       "key": "mammakarzinom",
       "label": "Mammakarzinom",
-      "anzahl": 98
+      "anzahl": 97
     },
     {
       "key": "prostatakarzinom",
@@ -17,7 +17,7 @@
     {
       "key": "lungenkarzinom",
       "label": "Lungenkarzinom",
-      "anzahl": 162
+      "anzahl": 161
     },
     {
       "key": "kolorektales-karzinom",
@@ -106,40 +106,36 @@
     }
   ],
   "ersteKennungen": {
-    "NCT07062965": {
-      "titel": "A Study to Learn About the Study Medicine Called PF-07248144 in Combination With",
+    "NCT06926868": {
+      "titel": "A Study of Izalontamab Brengitecan Versus Chemotherapy in Participants With Prev",
       "entitaeten": [
         "mammakarzinom"
       ],
       "quellen": [
         "CTGOV"
       ],
-      "zentren": 10
+      "zentren": 16
     },
-    "NCT06643585": {
-      "titel": "A Randomized Secondary Adjuvant Treatment Intervention Study Comparing Trastuzum",
+    "NCT06081244": {
+      "titel": "NeoAdj. Therapy Comparing Sacituzumab Govitecan (SG) vs. SG+Pembrolizumab in Low",
+      "entitaeten": [
+        "mammakarzinom"
+      ],
+      "quellen": [
+        "CTGOV",
+        "CTIS"
+      ],
+      "zentren": 43
+    },
+    "NCT06540872": {
+      "titel": "Multimodal Imaging With FAPI-PET/MRI in Breast Carcinoma-In-Situ for Detection o",
       "entitaeten": [
         "mammakarzinom"
       ],
       "quellen": [
         "CTGOV"
       ],
-      "zentren": 1
-    },
-    "NCT05503797": {
-      "titel": "A Study to Assess the Efficacy and Safety of FORE8394 in Participants With Cance",
-      "entitaeten": [
-        "mammakarzinom",
-        "harnblasenkarzinom",
-        "leberkarzinom",
-        "ovarialkarzinom",
-        "schilddruesenkarzinom",
-        "hirntumoren"
-      ],
-      "quellen": [
-        "CTGOV"
-      ],
-      "zentren": 3
+      "zentren": 2
     }
   }
 }
