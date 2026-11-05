@@ -1,18 +1,18 @@
 {
-  "stand": "2026-11-03T04:11:58.600Z",
-  "anzahl": 709,
-  "zentren": 4358,
+  "stand": "2026-11-05T04:14:16.643Z",
+  "anzahl": 711,
+  "zentren": 4333,
   "fehler": 0,
   "proEntitaet": [
     {
       "key": "mammakarzinom",
       "label": "Mammakarzinom",
-      "anzahl": 97
+      "anzahl": 96
     },
     {
       "key": "prostatakarzinom",
       "label": "Prostatakarzinom",
-      "anzahl": 62
+      "anzahl": 63
     },
     {
       "key": "lungenkarzinom",
@@ -42,7 +42,7 @@
     {
       "key": "pankreaskarzinom",
       "label": "Pankreaskarzinom",
-      "anzahl": 22
+      "anzahl": 23
     },
     {
       "key": "magenkarzinom",
@@ -97,7 +97,7 @@
     {
       "key": "multiples-myelom",
       "label": "Multiples Myelom",
-      "anzahl": 54
+      "anzahl": 55
     },
     {
       "key": "hirntumoren",
@@ -106,18 +106,29 @@
     }
   ],
   "ersteKennungen": {
-    "NCT06926868": {
-      "titel": "A Study of Izalontamab Brengitecan Versus Chemotherapy in Participants With Prev",
+    "NCT06790693": {
+      "titel": "A Study Evaluating the Efficacy and Safety of Inavolisib Plus CDK4/6 Inhibitor a",
       "entitaeten": [
         "mammakarzinom"
       ],
       "quellen": [
         "CTGOV"
       ],
-      "zentren": 16
+      "zentren": 15
     },
-    "NCT06081244": {
-      "titel": "NeoAdj. Therapy Comparing Sacituzumab Govitecan (SG) vs. SG+Pembrolizumab in Low",
+    "NCT07288359": {
+      "titel": "Study of GVV858 as a Single Agent or in Combination With Endocrine Therapy in Pa",
+      "entitaeten": [
+        "mammakarzinom",
+        "prostatakarzinom"
+      ],
+      "quellen": [
+        "CTGOV"
+      ],
+      "zentren": 2
+    },
+    "NCT05332561": {
+      "titel": "Genomics Guided Targeted Post-neoadjuvant Therapy in Patients With Early Breast ",
       "entitaeten": [
         "mammakarzinom"
       ],
@@ -125,17 +136,7 @@
         "CTGOV",
         "CTIS"
       ],
-      "zentren": 43
-    },
-    "NCT06540872": {
-      "titel": "Multimodal Imaging With FAPI-PET/MRI in Breast Carcinoma-In-Situ for Detection o",
-      "entitaeten": [
-        "mammakarzinom"
-      ],
-      "quellen": [
-        "CTGOV"
-      ],
-      "zentren": 2
+      "zentren": 9
     }
   }
 }
