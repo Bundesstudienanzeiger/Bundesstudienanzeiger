@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-05T04:14:16.643Z",
-  "anzahl": 711,
+  "stand": "2026-11-06T04:14:03.095Z",
+  "anzahl": 709,
   "zentren": 4333,
   "fehler": 0,
   "proEntitaet": [
@@ -97,46 +97,46 @@
     {
       "key": "multiples-myelom",
       "label": "Multiples Myelom",
-      "anzahl": 55
+      "anzahl": 54
     },
     {
       "key": "hirntumoren",
       "label": "Hirntumoren",
-      "anzahl": 11
+      "anzahl": 10
     }
   ],
   "ersteKennungen": {
-    "NCT06790693": {
-      "titel": "A Study Evaluating the Efficacy and Safety of Inavolisib Plus CDK4/6 Inhibitor a",
+    "NCT06607757": {
+      "titel": "Capivasertib Plus Fulvestrant vs. Fulvestrant in Primary High-risk Lobular Breas",
       "entitaeten": [
         "mammakarzinom"
       ],
       "quellen": [
         "CTGOV"
       ],
-      "zentren": 15
+      "zentren": 25
     },
-    "NCT07288359": {
-      "titel": "Study of GVV858 as a Single Agent or in Combination With Endocrine Therapy in Pa",
+    "NCT06952803": {
+      "titel": "A Study of Metastases Free Survival With Saruparib vs Placebo Added to a Standar",
       "entitaeten": [
         "mammakarzinom",
         "prostatakarzinom"
       ],
       "quellen": [
-        "CTGOV"
+        "CTGOV",
+        "CTIS"
       ],
-      "zentren": 2
+      "zentren": 24
     },
-    "NCT05332561": {
-      "titel": "Genomics Guided Targeted Post-neoadjuvant Therapy in Patients With Early Breast ",
+    "NCT07054190": {
+      "titel": "A Study to Test Inavolisib Treatments in Participants With Early-Stage, PIK3CA-M",
       "entitaeten": [
         "mammakarzinom"
       ],
       "quellen": [
-        "CTGOV",
-        "CTIS"
+        "CTGOV"
       ],
-      "zentren": 9
+      "zentren": 8
     }
   }
 }
