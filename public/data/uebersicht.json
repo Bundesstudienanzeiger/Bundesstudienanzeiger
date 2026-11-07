@@ -1,7 +1,7 @@
 {
-  "stand": "2026-11-06T04:14:03.095Z",
-  "anzahl": 709,
-  "zentren": 4333,
+  "stand": "2026-11-07T04:08:31.954Z",
+  "anzahl": 710,
+  "zentren": 4335,
   "fehler": 0,
   "proEntitaet": [
     {
@@ -17,7 +17,7 @@
     {
       "key": "lungenkarzinom",
       "label": "Lungenkarzinom",
-      "anzahl": 161
+      "anzahl": 162
     },
     {
       "key": "kolorektales-karzinom",
@@ -106,15 +106,16 @@
     }
   ],
   "ersteKennungen": {
-    "NCT06607757": {
-      "titel": "Capivasertib Plus Fulvestrant vs. Fulvestrant in Primary High-risk Lobular Breas",
+    "NCT05633654": {
+      "titel": "Study of Sacituzumab Govitecan-hziy and Pembrolizumab Versus Treatment of Physic",
       "entitaeten": [
         "mammakarzinom"
       ],
       "quellen": [
-        "CTGOV"
+        "CTGOV",
+        "CTIS"
       ],
-      "zentren": 25
+      "zentren": 52
     },
     "NCT06952803": {
       "titel": "A Study of Metastases Free Survival With Saruparib vs Placebo Added to a Standar",
@@ -128,15 +129,15 @@
       ],
       "zentren": 24
     },
-    "NCT07054190": {
-      "titel": "A Study to Test Inavolisib Treatments in Participants With Early-Stage, PIK3CA-M",
+    "NCT07287098": {
+      "titel": "A Study of Imlunestrant (LY3484356) in Premenopausal Women With Estrogen Recepto",
       "entitaeten": [
         "mammakarzinom"
       ],
       "quellen": [
         "CTGOV"
       ],
-      "zentren": 8
+      "zentren": 30
     }
   }
 }
