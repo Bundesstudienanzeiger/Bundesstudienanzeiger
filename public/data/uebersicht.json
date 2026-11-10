@@ -1,13 +1,13 @@
 {
-  "stand": "2026-11-09T04:18:53.007Z",
-  "anzahl": 710,
-  "zentren": 4335,
+  "stand": "2026-11-10T04:10:07.694Z",
+  "anzahl": 712,
+  "zentren": 4340,
   "fehler": 0,
   "proEntitaet": [
     {
       "key": "mammakarzinom",
       "label": "Mammakarzinom",
-      "anzahl": 96
+      "anzahl": 97
     },
     {
       "key": "prostatakarzinom",
@@ -17,7 +17,7 @@
     {
       "key": "lungenkarzinom",
       "label": "Lungenkarzinom",
-      "anzahl": 162
+      "anzahl": 164
     },
     {
       "key": "kolorektales-karzinom",
@@ -87,7 +87,7 @@
     {
       "key": "non-hodgkin-lymphom",
       "label": "Non-Hodgkin-Lymphom",
-      "anzahl": 41
+      "anzahl": 40
     },
     {
       "key": "leukaemien",
@@ -106,38 +106,36 @@
     }
   ],
   "ersteKennungen": {
-    "NCT05633654": {
-      "titel": "Study of Sacituzumab Govitecan-hziy and Pembrolizumab Versus Treatment of Physic",
-      "entitaeten": [
-        "mammakarzinom"
-      ],
-      "quellen": [
-        "CTGOV",
-        "CTIS"
-      ],
-      "zentren": 52
-    },
-    "NCT06952803": {
-      "titel": "A Study of Metastases Free Survival With Saruparib vs Placebo Added to a Standar",
-      "entitaeten": [
-        "mammakarzinom",
-        "prostatakarzinom"
-      ],
-      "quellen": [
-        "CTGOV",
-        "CTIS"
-      ],
-      "zentren": 24
-    },
-    "NCT07287098": {
-      "titel": "A Study of Imlunestrant (LY3484356) in Premenopausal Women With Estrogen Recepto",
+    "NCT06631092": {
+      "titel": "Personalised Neoantigen-targeting Cancer Vaccine NECVAX-NEO1 in Neoadjuvant Trip",
       "entitaeten": [
         "mammakarzinom"
       ],
       "quellen": [
         "CTGOV"
       ],
-      "zentren": 30
+      "zentren": 2
+    },
+    "NCT06486883": {
+      "titel": "Safety and Efficacy of T-DXd vs. CDK4/6i-based ET as First-line Therapy of HR-po",
+      "entitaeten": [
+        "mammakarzinom"
+      ],
+      "quellen": [
+        "CTGOV",
+        "CTIS"
+      ],
+      "zentren": 5
+    },
+    "NCT07195227": {
+      "titel": "Efficacy and Safety of Camizestrant Plus Ribociclib in Patients With Breast Canc",
+      "entitaeten": [
+        "mammakarzinom"
+      ],
+      "quellen": [
+        "CTGOV"
+      ],
+      "zentren": 1
     }
   }
 }
