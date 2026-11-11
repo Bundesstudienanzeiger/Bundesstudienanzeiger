@@ -1,7 +1,7 @@
 {
-  "stand": "2026-11-10T04:10:07.694Z",
-  "anzahl": 712,
-  "zentren": 4340,
+  "stand": "2026-11-11T04:16:23.844Z",
+  "anzahl": 710,
+  "zentren": 4345,
   "fehler": 0,
   "proEntitaet": [
     {
@@ -17,7 +17,7 @@
     {
       "key": "lungenkarzinom",
       "label": "Lungenkarzinom",
-      "anzahl": 164
+      "anzahl": 163
     },
     {
       "key": "kolorektales-karzinom",
@@ -27,7 +27,7 @@
     {
       "key": "hautmelanom",
       "label": "Hautmelanom",
-      "anzahl": 34
+      "anzahl": 33
     },
     {
       "key": "harnblasenkarzinom",
@@ -92,12 +92,12 @@
     {
       "key": "leukaemien",
       "label": "Leukämien",
-      "anzahl": 101
+      "anzahl": 102
     },
     {
       "key": "multiples-myelom",
       "label": "Multiples Myelom",
-      "anzahl": 54
+      "anzahl": 53
     },
     {
       "key": "hirntumoren",
@@ -106,15 +106,15 @@
     }
   ],
   "ersteKennungen": {
-    "NCT06631092": {
-      "titel": "Personalised Neoantigen-targeting Cancer Vaccine NECVAX-NEO1 in Neoadjuvant Trip",
+    "NCT06841354": {
+      "titel": "A Study of Sacituzumab Tirumotecan (Sac-TMT, MK-2870) as Monotherapy and in Comb",
       "entitaeten": [
         "mammakarzinom"
       ],
       "quellen": [
         "CTGOV"
       ],
-      "zentren": 2
+      "zentren": 6
     },
     "NCT06486883": {
       "titel": "Safety and Efficacy of T-DXd vs. CDK4/6i-based ET as First-line Therapy of HR-po",
@@ -127,15 +127,16 @@
       ],
       "zentren": 5
     },
-    "NCT07195227": {
-      "titel": "Efficacy and Safety of Camizestrant Plus Ribociclib in Patients With Breast Canc",
+    "NCT06380751": {
+      "titel": "Saruparib (AZD5305) Plus Camizestrant or Plus Endocrine Therapy, Compared With C",
       "entitaeten": [
         "mammakarzinom"
       ],
       "quellen": [
-        "CTGOV"
+        "CTGOV",
+        "CTIS"
       ],
-      "zentren": 1
+      "zentren": 17
     }
   }
 }
