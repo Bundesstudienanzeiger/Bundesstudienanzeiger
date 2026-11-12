@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-11T04:16:23.844Z",
-  "anzahl": 710,
+  "stand": "2026-11-12T04:14:43.248Z",
+  "anzahl": 705,
   "zentren": 4345,
   "fehler": 0,
   "proEntitaet": [
@@ -12,12 +12,12 @@
     {
       "key": "prostatakarzinom",
       "label": "Prostatakarzinom",
-      "anzahl": 63
+      "anzahl": 62
     },
     {
       "key": "lungenkarzinom",
       "label": "Lungenkarzinom",
-      "anzahl": 163
+      "anzahl": 160
     },
     {
       "key": "kolorektales-karzinom",
@@ -97,7 +97,7 @@
     {
       "key": "multiples-myelom",
       "label": "Multiples Myelom",
-      "anzahl": 53
+      "anzahl": 52
     },
     {
       "key": "hirntumoren",
