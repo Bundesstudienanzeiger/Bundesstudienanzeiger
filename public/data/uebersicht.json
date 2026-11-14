@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-13T04:15:32.160Z",
-  "anzahl": 704,
+  "stand": "2026-11-14T04:12:20.757Z",
+  "anzahl": 705,
   "zentren": 4347,
   "fehler": 0,
   "proEntitaet": [
@@ -12,7 +12,7 @@
     {
       "key": "prostatakarzinom",
       "label": "Prostatakarzinom",
-      "anzahl": 62
+      "anzahl": 63
     },
     {
       "key": "lungenkarzinom",
@@ -106,6 +106,27 @@
     }
   ],
   "ersteKennungen": {
+    "NCT07174336": {
+      "titel": "A Study of Tersolisib (LY4064809/STX-478) With Other Anti-Cancer Treatments in P",
+      "entitaeten": [
+        "mammakarzinom"
+      ],
+      "quellen": [
+        "CTGOV"
+      ],
+      "zentren": 23
+    },
+    "NCT05386108": {
+      "titel": "Study of Abemaciclib and Elacestrant in Participants With Brain Metastasis Due t",
+      "entitaeten": [
+        "mammakarzinom"
+      ],
+      "quellen": [
+        "CTGOV",
+        "CTIS"
+      ],
+      "zentren": 9
+    },
     "NCT07085767": {
       "titel": "Palazestrant in Combination With Ribociclib for the First-line Treatment of ER+/",
       "entitaeten": [
@@ -116,28 +137,6 @@
         "CTIS"
       ],
       "zentren": 4
-    },
-    "NCT06726148": {
-      "titel": "Study of ECI830 Single Agent or in Combination in Patients With Advanced HR+/HER",
-      "entitaeten": [
-        "mammakarzinom",
-        "lungenkarzinom"
-      ],
-      "quellen": [
-        "CTGOV",
-        "CTIS"
-      ],
-      "zentren": 3
-    },
-    "NCT06312176": {
-      "titel": "A Study of Sacituzumab Tirumotecan (MK-2870) as a Single Agent and in Combinatio",
-      "entitaeten": [
-        "mammakarzinom"
-      ],
-      "quellen": [
-        "CTGOV"
-      ],
-      "zentren": 9
     }
   }
 }
