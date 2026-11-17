@@ -1,7 +1,7 @@
 {
-  "stand": "2026-11-16T04:56:17.153Z",
+  "stand": "2026-11-17T04:14:34.382Z",
   "anzahl": 705,
-  "zentren": 4347,
+  "zentren": 4336,
   "fehler": 0,
   "proEntitaet": [
     {
@@ -52,7 +52,7 @@
     {
       "key": "leberkarzinom",
       "label": "Leberkarzinom",
-      "anzahl": 14
+      "anzahl": 13
     },
     {
       "key": "endometriumkarzinom",
@@ -77,7 +77,7 @@
     {
       "key": "kopf-hals-karzinom",
       "label": "Kopf-Hals-Karzinom",
-      "anzahl": 27
+      "anzahl": 28
     },
     {
       "key": "oesophaguskarzinom",
@@ -106,37 +106,36 @@
     }
   ],
   "ersteKennungen": {
-    "NCT07174336": {
-      "titel": "A Study of Tersolisib (LY4064809/STX-478) With Other Anti-Cancer Treatments in P",
+    "NCT05894239": {
+      "titel": "A Study to Evaluate the Efficacy and Safety of Inavolisib in Combination With Ph",
       "entitaeten": [
         "mammakarzinom"
       ],
       "quellen": [
         "CTGOV"
       ],
-      "zentren": 23
+      "zentren": 12
     },
-    "NCT05386108": {
-      "titel": "Study of Abemaciclib and Elacestrant in Participants With Brain Metastasis Due t",
+    "NCT06486883": {
+      "titel": "Safety and Efficacy of T-DXd vs. CDK4/6i-based ET as First-line Therapy of HR-po",
       "entitaeten": [
         "mammakarzinom"
       ],
       "quellen": [
         "CTGOV",
         "CTIS"
+      ],
+      "zentren": 5
+    },
+    "NCT07647328": {
+      "titel": "A Phase IIIb Study to Evaluate Camizestrant Plus Ribociclib in ER-positive, HER2",
+      "entitaeten": [
+        "mammakarzinom"
+      ],
+      "quellen": [
+        "CTGOV"
       ],
       "zentren": 9
-    },
-    "NCT07085767": {
-      "titel": "Palazestrant in Combination With Ribociclib for the First-line Treatment of ER+/",
-      "entitaeten": [
-        "mammakarzinom"
-      ],
-      "quellen": [
-        "CTGOV",
-        "CTIS"
-      ],
-      "zentren": 4
     }
   }
 }
