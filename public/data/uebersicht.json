@@ -1,7 +1,7 @@
 {
-  "stand": "2026-11-17T04:14:34.382Z",
-  "anzahl": 705,
-  "zentren": 4336,
+  "stand": "2026-11-18T04:16:44.830Z",
+  "anzahl": 707,
+  "zentren": 4324,
   "fehler": 0,
   "proEntitaet": [
     {
@@ -12,12 +12,12 @@
     {
       "key": "prostatakarzinom",
       "label": "Prostatakarzinom",
-      "anzahl": 63
+      "anzahl": 64
     },
     {
       "key": "lungenkarzinom",
       "label": "Lungenkarzinom",
-      "anzahl": 160
+      "anzahl": 161
     },
     {
       "key": "kolorektales-karzinom",
@@ -67,7 +67,7 @@
     {
       "key": "ovarialkarzinom",
       "label": "Ovarialkarzinom",
-      "anzahl": 33
+      "anzahl": 34
     },
     {
       "key": "schilddruesenkarzinom",
@@ -97,7 +97,7 @@
     {
       "key": "multiples-myelom",
       "label": "Multiples Myelom",
-      "anzahl": 52
+      "anzahl": 51
     },
     {
       "key": "hirntumoren",
@@ -106,18 +106,20 @@
     }
   ],
   "ersteKennungen": {
-    "NCT05894239": {
-      "titel": "A Study to Evaluate the Efficacy and Safety of Inavolisib in Combination With Ph",
+    "NCT06726148": {
+      "titel": "Study of ECI830 Single Agent or in Combination in Patients With Advanced HR+/HER",
       "entitaeten": [
-        "mammakarzinom"
+        "mammakarzinom",
+        "lungenkarzinom"
       ],
       "quellen": [
-        "CTGOV"
+        "CTGOV",
+        "CTIS"
       ],
-      "zentren": 12
+      "zentren": 3
     },
-    "NCT06486883": {
-      "titel": "Safety and Efficacy of T-DXd vs. CDK4/6i-based ET as First-line Therapy of HR-po",
+    "NCT06757634": {
+      "titel": "Phase 3 Study of Gedatolisib as First-Line Treatment for Patients With HR-Positi",
       "entitaeten": [
         "mammakarzinom"
       ],
@@ -125,17 +127,17 @@
         "CTGOV",
         "CTIS"
       ],
-      "zentren": 5
+      "zentren": 4
     },
-    "NCT07647328": {
-      "titel": "A Phase IIIb Study to Evaluate Camizestrant Plus Ribociclib in ER-positive, HER2",
+    "NCT07405801": {
+      "titel": "A Phase II Study Evaluating the Efficacy and Safety of Inavolisib Plus Ribocicli",
       "entitaeten": [
         "mammakarzinom"
       ],
       "quellen": [
         "CTGOV"
       ],
-      "zentren": 9
+      "zentren": 5
     }
   }
 }
