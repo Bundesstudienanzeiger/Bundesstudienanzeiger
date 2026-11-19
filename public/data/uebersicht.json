@@ -1,7 +1,7 @@
 {
-  "stand": "2026-11-18T04:16:44.830Z",
-  "anzahl": 707,
-  "zentren": 4324,
+  "stand": "2026-11-19T04:18:22.327Z",
+  "anzahl": 704,
+  "zentren": 4323,
   "fehler": 0,
   "proEntitaet": [
     {
@@ -12,7 +12,7 @@
     {
       "key": "prostatakarzinom",
       "label": "Prostatakarzinom",
-      "anzahl": 64
+      "anzahl": 63
     },
     {
       "key": "lungenkarzinom",
@@ -67,7 +67,7 @@
     {
       "key": "ovarialkarzinom",
       "label": "Ovarialkarzinom",
-      "anzahl": 34
+      "anzahl": 32
     },
     {
       "key": "schilddruesenkarzinom",
@@ -106,20 +106,18 @@
     }
   ],
   "ersteKennungen": {
-    "NCT06726148": {
-      "titel": "Study of ECI830 Single Agent or in Combination in Patients With Advanced HR+/HER",
+    "NCT06841354": {
+      "titel": "A Study of Sacituzumab Tirumotecan (Sac-TMT, MK-2870) as Monotherapy and in Comb",
       "entitaeten": [
-        "mammakarzinom",
-        "lungenkarzinom"
+        "mammakarzinom"
       ],
       "quellen": [
-        "CTGOV",
-        "CTIS"
+        "CTGOV"
       ],
-      "zentren": 3
+      "zentren": 6
     },
-    "NCT06757634": {
-      "titel": "Phase 3 Study of Gedatolisib as First-Line Treatment for Patients With HR-Positi",
+    "NCT07085767": {
+      "titel": "Palazestrant in Combination With Ribociclib for the First-line Treatment of ER+/",
       "entitaeten": [
         "mammakarzinom"
       ],
@@ -129,15 +127,16 @@
       ],
       "zentren": 4
     },
-    "NCT07405801": {
-      "titel": "A Phase II Study Evaluating the Efficacy and Safety of Inavolisib Plus Ribocicli",
+    "NCT05633654": {
+      "titel": "Study of Sacituzumab Govitecan-hziy and Pembrolizumab Versus Treatment of Physic",
       "entitaeten": [
         "mammakarzinom"
       ],
       "quellen": [
-        "CTGOV"
+        "CTGOV",
+        "CTIS"
       ],
-      "zentren": 5
+      "zentren": 52
     }
   }
 }
