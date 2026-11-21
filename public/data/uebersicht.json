@@ -1,7 +1,7 @@
 {
-  "stand": "2026-11-20T04:16:18.419Z",
-  "anzahl": 705,
-  "zentren": 4303,
+  "stand": "2026-11-21T04:12:55.136Z",
+  "anzahl": 704,
+  "zentren": 4306,
   "fehler": 0,
   "proEntitaet": [
     {
@@ -12,12 +12,12 @@
     {
       "key": "prostatakarzinom",
       "label": "Prostatakarzinom",
-      "anzahl": 63
+      "anzahl": 62
     },
     {
       "key": "lungenkarzinom",
       "label": "Lungenkarzinom",
-      "anzahl": 161
+      "anzahl": 162
     },
     {
       "key": "kolorektales-karzinom",
@@ -92,7 +92,7 @@
     {
       "key": "leukaemien",
       "label": "Leukämien",
-      "anzahl": 101
+      "anzahl": 100
     },
     {
       "key": "multiples-myelom",
@@ -106,8 +106,8 @@
     }
   ],
   "ersteKennungen": {
-    "NCT06435429": {
-      "titel": "A Study Comparing the Efficacy and Safety of Zanidatamab to Trastuzumab, Each in",
+    "NCT06081244": {
+      "titel": "NeoAdj. Therapy Comparing Sacituzumab Govitecan (SG) vs. SG+Pembrolizumab in Low",
       "entitaeten": [
         "mammakarzinom"
       ],
@@ -115,38 +115,29 @@
         "CTGOV",
         "CTIS"
       ],
-      "zentren": 5
+      "zentren": 43
     },
-    "NCT06172478": {
-      "titel": "A Study of HER3-DXd in Subjects With Locally Advanced or Metastatic Solid Tumors",
-      "entitaeten": [
-        "mammakarzinom",
-        "prostatakarzinom",
-        "lungenkarzinom",
-        "hautmelanom",
-        "harnblasenkarzinom",
-        "pankreaskarzinom",
-        "magenkarzinom",
-        "endometriumkarzinom",
-        "zervixkarzinom",
-        "ovarialkarzinom",
-        "kopf-hals-karzinom",
-        "oesophaguskarzinom"
-      ],
-      "quellen": [
-        "CTGOV"
-      ],
-      "zentren": 1
-    },
-    "NCT07174336": {
-      "titel": "A Study of Tersolisib (LY4064809/STX-478) With Other Anti-Cancer Treatments in P",
+    "NCT07178730": {
+      "titel": "NeoAdjuvant Therapy Comparing Sacituzumab Govitecan+Pembrolizumab vs. SoC Chemot",
       "entitaeten": [
         "mammakarzinom"
       ],
       "quellen": [
         "CTGOV"
       ],
-      "zentren": 23
+      "zentren": 26
+    },
+    "NCT06726148": {
+      "titel": "Study of ECI830 Single Agent or in Combination in Patients With Advanced HR+/HER",
+      "entitaeten": [
+        "mammakarzinom",
+        "lungenkarzinom"
+      ],
+      "quellen": [
+        "CTGOV",
+        "CTIS"
+      ],
+      "zentren": 3
     }
   }
 }
