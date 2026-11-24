@@ -1,7 +1,7 @@
 {
-  "stand": "2026-11-23T04:30:20.091Z",
+  "stand": "2026-11-24T04:21:18.998Z",
   "anzahl": 704,
-  "zentren": 4306,
+  "zentren": 4312,
   "fehler": 0,
   "proEntitaet": [
     {
@@ -106,38 +106,36 @@
     }
   ],
   "ersteKennungen": {
-    "NCT06081244": {
-      "titel": "NeoAdj. Therapy Comparing Sacituzumab Govitecan (SG) vs. SG+Pembrolizumab in Low",
-      "entitaeten": [
-        "mammakarzinom"
-      ],
-      "quellen": [
-        "CTGOV",
-        "CTIS"
-      ],
-      "zentren": 43
-    },
-    "NCT07178730": {
-      "titel": "NeoAdjuvant Therapy Comparing Sacituzumab Govitecan+Pembrolizumab vs. SoC Chemot",
+    "NCT06790693": {
+      "titel": "A Study Evaluating the Efficacy and Safety of Inavolisib Plus CDK4/6 Inhibitor a",
       "entitaeten": [
         "mammakarzinom"
       ],
       "quellen": [
         "CTGOV"
       ],
-      "zentren": 26
+      "zentren": 15
     },
-    "NCT06726148": {
-      "titel": "Study of ECI830 Single Agent or in Combination in Patients With Advanced HR+/HER",
+    "NCT06757634": {
+      "titel": "Phase 3 Study of Gedatolisib as First-Line Treatment for Patients With HR-Positi",
       "entitaeten": [
-        "mammakarzinom",
-        "lungenkarzinom"
+        "mammakarzinom"
       ],
       "quellen": [
         "CTGOV",
         "CTIS"
       ],
-      "zentren": 3
+      "zentren": 4
+    },
+    "NCT06966700": {
+      "titel": "A Clinical Study of Sacituzumab Tirumotecan (Sac-TMT, MK-2870) in People With Br",
+      "entitaeten": [
+        "mammakarzinom"
+      ],
+      "quellen": [
+        "CTGOV"
+      ],
+      "zentren": 6
     }
   }
 }
