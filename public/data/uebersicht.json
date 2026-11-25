@@ -1,7 +1,7 @@
 {
-  "stand": "2026-11-24T04:21:18.998Z",
-  "anzahl": 704,
-  "zentren": 4312,
+  "stand": "2026-11-25T04:31:21.253Z",
+  "anzahl": 702,
+  "zentren": 4311,
   "fehler": 0,
   "proEntitaet": [
     {
@@ -17,7 +17,7 @@
     {
       "key": "lungenkarzinom",
       "label": "Lungenkarzinom",
-      "anzahl": 162
+      "anzahl": 161
     },
     {
       "key": "kolorektales-karzinom",
@@ -102,40 +102,39 @@
     {
       "key": "hirntumoren",
       "label": "Hirntumoren",
-      "anzahl": 10
+      "anzahl": 9
     }
   ],
   "ersteKennungen": {
-    "NCT06790693": {
-      "titel": "A Study Evaluating the Efficacy and Safety of Inavolisib Plus CDK4/6 Inhibitor a",
+    "NCT06643585": {
+      "titel": "A Randomized Secondary Adjuvant Treatment Intervention Study Comparing Trastuzum",
       "entitaeten": [
         "mammakarzinom"
       ],
       "quellen": [
         "CTGOV"
       ],
-      "zentren": 15
+      "zentren": 1
     },
-    "NCT06757634": {
-      "titel": "Phase 3 Study of Gedatolisib as First-Line Treatment for Patients With HR-Positi",
-      "entitaeten": [
-        "mammakarzinom"
-      ],
-      "quellen": [
-        "CTGOV",
-        "CTIS"
-      ],
-      "zentren": 4
-    },
-    "NCT06966700": {
-      "titel": "A Clinical Study of Sacituzumab Tirumotecan (Sac-TMT, MK-2870) in People With Br",
+    "NCT07287098": {
+      "titel": "A Study of Imlunestrant (LY3484356) in Premenopausal Women With Estrogen Recepto",
       "entitaeten": [
         "mammakarzinom"
       ],
       "quellen": [
         "CTGOV"
       ],
-      "zentren": 6
+      "zentren": 29
+    },
+    "NCT07174336": {
+      "titel": "A Study of Tersolisib (LY4064809/STX-478) With Other Anti-Cancer Treatments in P",
+      "entitaeten": [
+        "mammakarzinom"
+      ],
+      "quellen": [
+        "CTGOV"
+      ],
+      "zentren": 23
     }
   }
 }
