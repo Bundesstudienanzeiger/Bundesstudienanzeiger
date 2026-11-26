@@ -1,23 +1,23 @@
 {
-  "stand": "2026-11-25T04:31:21.253Z",
-  "anzahl": 702,
-  "zentren": 4311,
-  "fehler": 0,
+  "stand": "2026-11-26T04:27:27.714Z",
+  "anzahl": 691,
+  "zentren": 4224,
+  "fehler": 1,
   "proEntitaet": [
     {
       "key": "mammakarzinom",
       "label": "Mammakarzinom",
-      "anzahl": 97
+      "anzahl": 98
     },
     {
       "key": "prostatakarzinom",
       "label": "Prostatakarzinom",
-      "anzahl": 62
+      "anzahl": 61
     },
     {
       "key": "lungenkarzinom",
       "label": "Lungenkarzinom",
-      "anzahl": 161
+      "anzahl": 160
     },
     {
       "key": "kolorektales-karzinom",
@@ -47,7 +47,7 @@
     {
       "key": "magenkarzinom",
       "label": "Magenkarzinom",
-      "anzahl": 26
+      "anzahl": 17
     },
     {
       "key": "leberkarzinom",
@@ -82,7 +82,7 @@
     {
       "key": "oesophaguskarzinom",
       "label": "Ösophaguskarzinom",
-      "anzahl": 29
+      "anzahl": 22
     },
     {
       "key": "non-hodgkin-lymphom",
@@ -97,7 +97,7 @@
     {
       "key": "multiples-myelom",
       "label": "Multiples Myelom",
-      "anzahl": 51
+      "anzahl": 50
     },
     {
       "key": "hirntumoren",
@@ -106,25 +106,15 @@
     }
   ],
   "ersteKennungen": {
-    "NCT06643585": {
-      "titel": "A Randomized Secondary Adjuvant Treatment Intervention Study Comparing Trastuzum",
+    "NCT07281833": {
+      "titel": "Phase III Study to Evaluate the Safety, Efficacy, and Impact on Quality of Life ",
       "entitaeten": [
         "mammakarzinom"
       ],
       "quellen": [
         "CTGOV"
       ],
-      "zentren": 1
-    },
-    "NCT07287098": {
-      "titel": "A Study of Imlunestrant (LY3484356) in Premenopausal Women With Estrogen Recepto",
-      "entitaeten": [
-        "mammakarzinom"
-      ],
-      "quellen": [
-        "CTGOV"
-      ],
-      "zentren": 29
+      "zentren": 14
     },
     "NCT07174336": {
       "titel": "A Study of Tersolisib (LY4064809/STX-478) With Other Anti-Cancer Treatments in P",
@@ -135,6 +125,16 @@
         "CTGOV"
       ],
       "zentren": 23
+    },
+    "NCT06841354": {
+      "titel": "A Study of Sacituzumab Tirumotecan (Sac-TMT, MK-2870) as Monotherapy and in Comb",
+      "entitaeten": [
+        "mammakarzinom"
+      ],
+      "quellen": [
+        "CTGOV"
+      ],
+      "zentren": 6
     }
   }
 }
