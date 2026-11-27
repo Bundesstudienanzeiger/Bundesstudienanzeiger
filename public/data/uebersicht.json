@@ -1,8 +1,8 @@
 {
-  "stand": "2026-11-26T04:27:27.714Z",
-  "anzahl": 691,
-  "zentren": 4224,
-  "fehler": 1,
+  "stand": "2026-11-27T04:28:26.451Z",
+  "anzahl": 700,
+  "zentren": 4320,
+  "fehler": 0,
   "proEntitaet": [
     {
       "key": "mammakarzinom",
@@ -47,7 +47,7 @@
     {
       "key": "magenkarzinom",
       "label": "Magenkarzinom",
-      "anzahl": 17
+      "anzahl": 26
     },
     {
       "key": "leberkarzinom",
@@ -82,7 +82,7 @@
     {
       "key": "oesophaguskarzinom",
       "label": "Ösophaguskarzinom",
-      "anzahl": 22
+      "anzahl": 29
     },
     {
       "key": "non-hodgkin-lymphom",
