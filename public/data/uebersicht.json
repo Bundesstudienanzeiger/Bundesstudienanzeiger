@@ -1,23 +1,23 @@
 {
-  "stand": "2026-11-27T04:28:26.451Z",
-  "anzahl": 700,
-  "zentren": 4320,
+  "stand": "2026-11-28T11:59:07.940Z",
+  "anzahl": 701,
+  "zentren": 4321,
   "fehler": 0,
   "proEntitaet": [
     {
       "key": "mammakarzinom",
       "label": "Mammakarzinom",
-      "anzahl": 98
+      "anzahl": 99
     },
     {
       "key": "prostatakarzinom",
       "label": "Prostatakarzinom",
-      "anzahl": 61
+      "anzahl": 62
     },
     {
       "key": "lungenkarzinom",
       "label": "Lungenkarzinom",
-      "anzahl": 160
+      "anzahl": 159
     },
     {
       "key": "kolorektales-karzinom",
@@ -106,35 +106,35 @@
     }
   ],
   "ersteKennungen": {
-    "NCT07281833": {
-      "titel": "Phase III Study to Evaluate the Safety, Efficacy, and Impact on Quality of Life ",
+    "NCT06540872": {
+      "titel": "Multimodal Imaging With FAPI-PET/MRI in Breast Carcinoma-In-Situ for Detection o",
       "entitaeten": [
         "mammakarzinom"
       ],
       "quellen": [
         "CTGOV"
       ],
-      "zentren": 14
+      "zentren": 2
     },
-    "NCT07174336": {
-      "titel": "A Study of Tersolisib (LY4064809/STX-478) With Other Anti-Cancer Treatments in P",
+    "NCT07287098": {
+      "titel": "A Study of Imlunestrant (LY3484356) in Premenopausal Women With Estrogen Recepto",
       "entitaeten": [
         "mammakarzinom"
       ],
       "quellen": [
         "CTGOV"
       ],
-      "zentren": 23
+      "zentren": 29
     },
-    "NCT06841354": {
-      "titel": "A Study of Sacituzumab Tirumotecan (Sac-TMT, MK-2870) as Monotherapy and in Comb",
+    "NCT06607757": {
+      "titel": "Capivasertib Plus Fulvestrant vs. Fulvestrant in Primary High-risk Lobular Breas",
       "entitaeten": [
         "mammakarzinom"
       ],
       "quellen": [
         "CTGOV"
       ],
-      "zentren": 6
+      "zentren": 25
     }
   }
 }
